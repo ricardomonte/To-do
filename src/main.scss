@@ -46,8 +46,31 @@ button {
     'titlesp titlet'
     'projects tasks '
     'projects tasks '
-    'createpro addproj ';
+    'addproj addproj';
   margin-top: 3rem;
+
+  .invisible {
+    position: absolute;
+    display: none;
+  }
+
+  .visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+
+  }
 
   .title-webp {
     grid-area: title;
@@ -75,5 +98,166 @@ button {
     border-top-right-radius: 0.5rem ;
   } p {
     margin: 0;
+  }
+
+  .container-project {
+    grid-area: projects;
+    background-color: #820d7c;
+    color: #fff;
+    height: 100%;
+    border-bottom-left-radius: 0.5rem;
+    overflow-y: scroll;
+  
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #2f7e83;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: #0a4b4d;
+    }
+  
+    p {
+      font-size: 1.5em;
+      font-style: oblique;
+      text-transform: uppercase;
+      margin-left: 0.8rem;
+      cursor: pointer;
+      width: max-content;
+    }
+  }
+
+  .container-task {
+    grid-area: tasks;
+    width: 100%;
+    height: 100%;
+    justify-self: left;
+    background-color: #fff;
+    overflow-y: scroll;
+  
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #2f7e83;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: #0a4b4d;
+    }
+  
+    .cont-newproject {
+      grid-area: addproj;
+      justify-self: center;
+      margin-top: 2rem;
+      height: max-content;
+      width: 22rem;
+      display: flex;
+      justify-content: space-between;
+  
+      input {
+        border-radius: 0.5rem;
+      }
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(4, 3rem);
+      grid-template-areas:
+        'title desc'
+        'date date'
+        'prio prio'
+        'buton buton';
+      column-gap: 2rem;
+      row-gap: 2rem;
+      margin-left: 0 0.5rem;
+      padding: 2rem 0;
+
+
+      label {
+        text-align: center;
+      }
+
+      .cont-ftitle {
+        grid-area: title;
+        text-align: center;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .cont-fdesc {
+        @extend .cont-ftitle;
+
+        grid-area: desc;
+      }
+
+      .cont-fdate {
+        @extend .cont-ftitle;
+
+        grid-area: date;
+        align-items: center;
+
+        input {
+          width: 30%;
+        }
+      }
+
+      .cont-fprio {
+        @extend .cont-ftitle;
+
+        grid-area: prio;
+        align-items: center;
+      }
+
+      .cont-fbuton {
+        grid-area: buton;
+        justify-self: center;
+      }
+  
+      
+    }
+    
+  
+    .task {
+      height: max-content;
+      text-align: center;
+      padding: 0 0.5rem;
+      margin-bottom: 0.5rem;
+  
+      .task-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
+        list-style: none;
+        border: 1px solid lightgray;
+        border-radius: 0.5rem;
+  
+        li {
+          width: max-content;
+        }
+      }
+  
+      .task-done {
+        text-decoration: line-through;
+      }
+    }
   }
 }
