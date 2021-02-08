@@ -1,6 +1,4 @@
-import taskForm from './taskForm';
-import createNewTask from './taskCreateNew'
-// import { createNewTask, markAsDone, getOneTask } from './eventsClick';
+import taskOnlyClick from './taskOnlyClick';
 
 // const checkForExist = (form, value, container, containerTask, brother, containerContent, ulElement) => {
 //   const check = document.querySelector('#cont');
@@ -55,7 +53,6 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   liDescription.textContent = description;
   liDate.textContent = date;
   liPrio.textContent = priority;
-  // addClassInDoneElement(liTitle, liDescription, liDate, liDone, title);
   container.classList.add('cont-form');
   containerContent.classList.add('task');
 
@@ -68,10 +65,8 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   ulElement.append(liDone);
 
   containerContent.append(ulElement);
-  // container.append(form);
-  // parent.append(container);
   parent.append(containerContent);
-
+  taskOnlyClick(containerContent)
 
   // checkForExist(form, value, container, containerTask, brother, containerContent, ulElement);
   // createNewTask(form);

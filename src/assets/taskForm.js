@@ -1,3 +1,45 @@
+import taskGenerator from './taskCreatorClass';
+import addToLocalProject from './addToLocal';
+import taskInLocal from './taskInLocal';
+import taskDisplayElements from './taskDisplayElements'
+
+const removeElement = (task) => {
+  task.forEach((item) => { item.remove(); });
+};
+
+const reloadElement = () => {
+  const tasks = document.querySelectorAll('div.task');
+  removeElement(tasks);
+};
+
+const getValueFormTask = () => {
+  const title = document.querySelector('#title').value;
+  const description = document.querySelector('#description').value;
+  const date = document.querySelector('#date').value;
+  const priority = document.querySelector('#priority').value;
+  const project = document.getElementById('hiden').value;
+
+  return [project, title, description, date, priority];
+};
+
+const createNewTask = (element) => {
+
+  element.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const parent = element.parentElement
+    const valuesTask = getValueFormTask();
+    const task = taskGenerator(...valuesTask);
+    addToLocalProject(...task);
+    const projectArr = taskInLocal(element.id)
+    parent.append(element)
+    reloadElement()
+    projectArr.map((item) => {
+      taskDisplayElements(parent, item.title, item.description, item.date, item.priority, item.done);
+    });
+    element.reset();
+  });
+};
+
 
 const taskForm = (hiden) => {
   const form = document.createElement('form');
@@ -26,6 +68,8 @@ const taskForm = (hiden) => {
   inputPrio.append(important);
   inputPrio.append(normal);
   inputPrio.append(low);
+
+  form.id = hiden;
 
   hidenInput.name = 'task';
   inputT.id = 'title';
@@ -62,6 +106,8 @@ const taskForm = (hiden) => {
   form.append(divP)
   form.append(sub);
   form.append(hidenInput);
+
+  createNewTask(form)
   return form;
 };
 export { taskForm as default };
