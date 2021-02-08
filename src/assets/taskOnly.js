@@ -1,5 +1,25 @@
+const taskClose = (container) => {
+  container.classList.remove('visible');
+  container.innerHTML = "";
+}
+
+
+const taskClickOnly = (containerTask) => {
+  containerTask.addEventListener('click', (e) => {
+    if(e.target.id === 'close_task') {
+      taskClose(containerTask);
+    }
+    if(e.target.id === 'edit_task'){
+      taskEdit()
+    }
+    if(e.target.id === 'delete_task') {
+      taskDelete()
+    }
+  })
+}
+
 const taskOnlyDisplay = (title, description, date, priority, done) => {
-  const project = document.forms[0];
+  // const project = document.forms[0];
   const containerTask = document.querySelector('#task-inv');
   const taskTitle = document.createElement('p');
   const taskDesc = document.createElement('p');
@@ -19,7 +39,10 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   btnEdit.textContent = "Edit";
   btnClose.textContent = "Close";
 
-  containerTask.id = `_${project}`;
+  btnClose.id = 'close_task';
+  btnEdit.id = 'edit_task';
+  btnDelete.id = 'delete_task';
+
   containerTask.append(taskTitle)
   containerTask.append(taskDesc)
   containerTask.append(taskDate)
@@ -30,6 +53,8 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   containerTask.append(btnClose)
 
   containerTask.classList.toggle('visible')
+
+  taskClickOnly(containerTask);
 
 }
 
