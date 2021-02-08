@@ -1,45 +1,16 @@
 import taskOnlyClick from './taskOnlyClick';
 
-// const checkForExist = (form, value, container, containerTask, brother, containerContent, ulElement) => {
-//   const check = document.querySelector('#cont');
-//   const formCheck = document.querySelector(`#${value}`);
-//   if (check && formCheck) {
-//     containerContent.append(ulElement);
-
-//     check.append(containerContent);
-//   } else {
-//     containerContent.append(ulElement);
-//     container.append(form);
-//     containerTask.append(container);
-//     containerTask.append(containerContent);
-//     brother.insertAdjacentElement('afterend', containerTask);
-//   }
-// };
-
-// const addClassInDoneElement = (lititle, lidesc, lidate, lidone, title) => {
-//   if (lidone.textContent === `Task ${title} is done`) {
-//     lititle.classList.add('task-done');
-//     lidesc.classList.add('task-done');
-//     lidate.classList.add('task-done');
-//   }
-// };
-
-const isDone = (done, title) => {
+const isDone = (done) => {
   if (!done) {
-    return `Mark ${title} as done`;
+    return `Incomplete`;
   }
-  return `Task ${title} is done`;
+  return `Completed`;
 };
 
 
 const taskDisplayElements = (parent, title, description, date, priority, done) => {
-  // const containerTask = document.createElement('div');
   const container = document.createElement('div');
   const containerContent = document.createElement('div');
-
-  // const form = taskForm(value);
-  // containerTask.id = 'cont';
-  // form.id = value;
   const ulElement = document.createElement('ul');
   const liTitle = document.createElement('li');
   const liDescription = document.createElement('li');
@@ -47,7 +18,7 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   const liPrio = document.createElement('li');
   const liDone = document.createElement('li');
 
-  const textDone = isDone(done, title);
+  const textDone = isDone(done);
   liDone.textContent = textDone;
   liTitle.textContent = title;
   liDescription.textContent = description;
@@ -58,6 +29,7 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
 
 
   ulElement.classList.add('task-list');
+  ulElement.id = `task-${date}`;
   ulElement.append(liTitle);
   ulElement.append(liDescription);
   ulElement.append(liDate);
@@ -67,10 +39,5 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   containerContent.append(ulElement);
   parent.append(containerContent);
   taskOnlyClick(containerContent)
-
-  // checkForExist(form, value, container, containerTask, brother, containerContent, ulElement);
-  // createNewTask(form);
-  // markAsDone(liDone);
-  // getOneTask(containerContent, liTitle);
 };
 export { taskDisplayElements as default };

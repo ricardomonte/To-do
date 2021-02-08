@@ -10,10 +10,8 @@ const clickDisplayTask = (element, sibling) => {
     if(e.target.dataset.name === 'All') {
       sibling.textContent = "";
       taskAll()
-      console.log('im all the shit')
     }
     if (e.target.dataset.name && task.length === 0 && e.target.dataset.name !== 'All') {
-      console.log('task empty')
       sibling.textContent = "";
       const form = taskForm(e.target.textContent)
       sibling.append(form)

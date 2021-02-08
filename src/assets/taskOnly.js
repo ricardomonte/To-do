@@ -1,8 +1,161 @@
 import getLocalProject from './getLocal';
 
+
 const taskClose = (container) => {
   container.classList.remove('visible');
   container.innerHTML = "";
+}
+
+const changeUlTask = (date, newValues, container) => {
+  const ulElement = document.querySelector(`#task-${date}`);
+  const liTitle = document.createElement('li');
+  const liDescription = document.createElement('li');
+  const liDate = document.createElement('li');
+  const liPrio = document.createElement('li');
+  const liDone = document.createElement('li');
+
+  liTitle.textContent = newValues[0];
+  liDescription.textContent = newValues[1];
+  liDate.textContent = newValues[2];
+  liPrio.textContent = newValues[3];
+  liDone.textContent = newValues[4];
+
+  ulElement.innerHTML = '';
+  ulElement.append(liTitle);
+  ulElement.append(liDescription);
+  ulElement.append(liDate);
+  ulElement.append(liPrio);
+  ulElement.append(liDone);
+
+  taskClose(container)
+}
+
+
+const changeInLocal = (oldContent, container, newValues) => {
+  const allTask = getLocalProject('task');
+  const proj = oldContent[0];
+  const title = oldContent[1];
+  const desc = oldContent[2];
+  const date = oldContent[3]
+  const titlen = newValues[0];
+  const descn = newValues[1];
+  const daten = newValues[2];
+  const prion = newValues[3];
+  const donen = newValues[4];
+
+  allTask.forEach((item) => {
+    if(item.project === proj && item.title === title && item.description === desc){
+      item.title = titlen;
+      item.description = descn;
+      item.date = daten;
+      item.priority = prion;
+      item.done = donen === 'Completed'? true : false
+    }
+  })
+
+  localStorage.setItem('task', JSON.stringify(allTask))
+  changeUlTask(date, newValues, container)
+}
+
+const valuesForm = () => {
+  const title = document.querySelector('#taskOnlyTitle').value;
+  const desc = document.querySelector('#taskOnlyDesc').value;
+  const date = document.querySelector('#taskOnlyDate').value;
+  const prio = document.querySelector('#taskOnlyPrio').value;
+  const done = document.querySelector('#taskOnlyDOne').value;
+
+  return [ title, desc, date, prio, done ]
+}
+
+const submitForm = (form, oldContent, container) => {
+  form.addEventListener('submit',(e) => {
+    e.preventDefault()
+    const newValues = valuesForm()
+    changeInLocal(oldContent, container, newValues);
+
+  })
+}
+
+const taskEditAddToLocal = (container) => {
+  const project = document.forms[0].id;
+  const arrElementsTask = Array.from(container.children, ({textContent}) => textContent)
+    .filter((item) => item !== 'Delete this task' && item !== 'Close' && item !== 'Edit');
+  arrElementsTask.unshift(project);
+  return arrElementsTask
+
+}
+
+const taskEdit = (container) => {
+  const oldValues = taskEditAddToLocal(container)
+  const form = document.createElement('form');
+  const labelTitle = document.createElement('label');
+  const inputT = document.createElement('input');
+  const labelDesc = document.createElement('label');
+  const inputDescription = document.createElement('input');
+  const labelDueDate = document.createElement('label');
+  const inputDueDate = document.createElement('input');
+  const labelPrio = document.createElement('label');
+  const inputPrio = document.createElement('select');
+  const important = document.createElement('option');
+  const normal = document.createElement('option');
+  const low = document.createElement('option');
+  const labelDone = document.createElement('label');
+  const selectDone = document.createElement('select');
+  const optionNotDone = document.createElement('option');
+  const optionDone = document.createElement('option');
+  const sub = document.createElement('button');
+
+  important.textContent = 'Important';
+  normal.textContent = 'Normal';
+  low.textContent = 'Low';
+  labelPrio.textContent = 'Select the priority';
+  inputPrio.append(important);
+  inputPrio.append(normal);
+  inputPrio.append(low);
+  
+  optionDone.textContent = 'Completed';
+  optionNotDone.textContent = 'Incomplete';
+  labelDone.textContent = 'if its Done';
+  selectDone.append(optionDone);
+  selectDone.append(optionNotDone);
+
+  
+  inputT.value = oldValues[1];
+  inputDescription.value = oldValues[2];
+  inputDueDate.value = oldValues[3];
+
+  inputT.id = 'taskOnlyTitle';
+  inputDescription.id = 'taskOnlyDesc';
+  inputDueDate.id = 'taskOnlyDate';
+  inputPrio.id = 'taskOnlyPrio';
+  selectDone.id = 'taskOnlyDOne';
+
+  labelTitle.textContent = 'What you gonna do?';
+  labelDesc.textContent = 'How you gonna do it?';
+  labelDueDate.textContent = 'When it must be done?';
+  inputDueDate.setAttribute('type', 'date');
+
+
+  sub.setAttribute('type', 'submit');
+  sub.textContent = 'Update task';
+
+
+
+  form.append(labelTitle);
+  form.append(inputT);
+  form.append(labelDesc);
+  form.append(inputDescription)
+  form.append(labelDueDate);
+  form.append(inputDueDate)
+  form.append(labelPrio);
+  form.append(inputPrio)
+  form.append(labelDone);
+  form.append(selectDone)
+  form.append(sub);
+
+  container.innerHTML = '';
+  container.append(form)
+  submitForm(form, oldValues, container)
 }
 
 const reloadElement = (title) => {
@@ -55,7 +208,6 @@ const taskClickOnly = (containerTask) => {
 }
 
 const taskOnlyDisplay = (title, description, date, priority, done) => {
-  // const project = document.forms[0];
   const containerTask = document.querySelector('#task-inv');
   const taskTitle = document.createElement('p');
   const taskDesc = document.createElement('p');
@@ -95,9 +247,9 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
 }
 
 
-const taskOnly = (ulTask) => {
-  const arrListTask = Array.from(ulTask.children, ({textContent}) => textContent)
-  taskOnlyDisplay( ...arrListTask)
+const taskOnly = (ultask) => {
+  const arrListTask = Array.from(ultask.children, ({textContent}) => textContent)
+  taskOnlyDisplay(...arrListTask)
 }
 
 export { taskOnly as default }
