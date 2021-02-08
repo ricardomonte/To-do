@@ -12,7 +12,7 @@ const displayNewProject = (element) => {
   });
 };
 
-const formProject = (element,myProject) => {
+const formProject = (element, myProject) => {
   const containerInput = document.createElement('div')
   const input = document.createElement('INPUT');
   const button = document.createElement('button');
