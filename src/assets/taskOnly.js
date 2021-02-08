@@ -1,8 +1,43 @@
+import getLocalProject from './getLocal';
+
 const taskClose = (container) => {
   container.classList.remove('visible');
   container.innerHTML = "";
 }
 
+const reloadElement = (title) => {
+  const task = document.querySelectorAll('div.task');
+  task.forEach((item) => { 
+    if(item.innerText.includes(title)){
+      item.remove()
+    }
+  });
+
+};
+
+const taskDelete = (container) => {
+  const project = document.forms[0].id;
+  const arrElementsTask = Array.from(container.children, ({textContent}) => textContent)
+    .filter((item) => item !== 'Delete this task' && item !== 'Close' && item !== 'Edit');
+  const title = arrElementsTask[0];
+  const desc = arrElementsTask[1];
+  const date = arrElementsTask[2];
+  const prio = arrElementsTask[3];
+
+  const allTask = getLocalProject('task');
+
+  const allTaskWout = allTask.filter((item) => {
+    if (item.project === project && item.title === title && item.description === desc && item.date === date && item.priority === prio) {
+      return false;
+    }
+    return true;
+  });
+
+  localStorage.setItem('task', JSON.stringify(allTaskWout))
+
+  reloadElement(title)
+  taskClose(container)
+}
 
 const taskClickOnly = (containerTask) => {
   containerTask.addEventListener('click', (e) => {
@@ -10,10 +45,11 @@ const taskClickOnly = (containerTask) => {
       taskClose(containerTask);
     }
     if(e.target.id === 'edit_task'){
-      taskEdit()
+      taskEdit(containerTask)
     }
     if(e.target.id === 'delete_task') {
-      taskDelete()
+      
+      taskDelete(containerTask)
     }
   })
 }
