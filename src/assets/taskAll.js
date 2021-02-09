@@ -1,5 +1,6 @@
 import priorityCheck from './checkPriority';
 import isDone from './isDone';
+import defaultList from './defaultList';
 
 const appending = (project, title, description, date, priority, done) => {
   const container = document.querySelector('#cont');
@@ -10,10 +11,10 @@ const appending = (project, title, description, date, priority, done) => {
   const liProjDate = document.createElement('li');
   const liProjDone = document.createElement('li');
   const liProjprio = document.createElement('li');
-
+  const containerUl = document.createElement('div')
   ulList.id = 'allTodos';
   ulList.classList.add('task-list__all')
-
+  containerUl.classList.add('list-all__container')
   const textDone = isDone(done);
   liProjName.textContent = project;
   liProjTitle.textContent = title;
@@ -29,7 +30,9 @@ const appending = (project, title, description, date, priority, done) => {
   ulList.append(liProjDate);
   ulList.append(liProjDone);
   ulList.append(liProjprio);
-  container.append(ulList);
+  containerUl.append(defaultList())
+  containerUl.append(ulList)
+  container.append(containerUl);
 };
 
 const displayAll = (alltasks) => {

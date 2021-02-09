@@ -56,6 +56,41 @@ button {
     background-color: #fff;
     border: 1px solid lightgray;
     border-radius: 0.5rem; }
+  .container-total .list-all__container {
+    padding: 0 0.5rem; }
+  .container-total .task-list__default {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 30px;
+    grid-template-areas: 'title desc date prio done';
+    background-color: #820d7c;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    margin-top: 1rem; }
+    .container-total .task-list__default .title-def, .container-total .task-list__default .desc-def, .container-total .task-list__default .date-def, .container-total .task-list__default .prio-def, .container-total .task-list__default .done-def {
+      grid-area: title;
+      color: #ffffff;
+      font-weight: 700;
+      justify-self: center;
+      align-self: center; }
+    .container-total .task-list__default .desc-def, .container-total .task-list__default .date-def, .container-total .task-list__default .prio-def, .container-total .task-list__default .done-def {
+      grid-area: desc; }
+    .container-total .task-list__default .date-def {
+      grid-area: date; }
+    .container-total .task-list__default .prio-def {
+      grid-area: prio; }
+    .container-total .task-list__default .done-def {
+      grid-area: done; }
+  .container-total .task-list__all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5rem 0;
+    list-style: none;
+    border: 1px solid lightgray; }
+    .container-total .task-list__all li {
+      width: max-content; }
   .container-total .title-webp {
     grid-area: title;
     align-self: center;
@@ -126,16 +161,6 @@ button {
       background: #2f7e83; }
     .container-total .container-task::-webkit-scrollbar-thumb:hover {
       background: #0a4b4d; }
-    .container-total .container-task .task-list__all {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem 0;
-      list-style: none;
-      border: 1px solid lightgray;
-      border-radius: 0.5rem; }
-      .container-total .container-task .task-list__all li {
-        width: max-content; }
     .container-total .container-task .cont-newproject {
       grid-area: addproj;
       justify-self: center;

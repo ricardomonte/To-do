@@ -1,6 +1,7 @@
 import taskOnlyClick from './taskOnlyClick';
 import priorityCheck from './checkPriority';
 import isDone from './isDone';
+import defaultList from './defaultList';
 
 const taskDisplayElements = (parent, title, description, date, priority, done) => {
   const container = document.createElement('div');
@@ -30,9 +31,10 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   ulElement.append(liDate);
   ulElement.append(liPrio);
   ulElement.append(liDone);
-
+  const listDef = defaultList();
+  containerContent.append(listDef);
   containerContent.append(ulElement);
   parent.append(containerContent);
-  taskOnlyClick(containerContent)
+  taskOnlyClick(containerContent);
 };
 export { taskDisplayElements as default };

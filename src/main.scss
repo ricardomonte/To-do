@@ -72,6 +72,66 @@ button {
 
   }
 
+  .list-all__container {
+    padding: 0 0.5rem;
+  }
+
+  .task-list__default {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 30px;
+    grid-template-areas: 
+    'title desc date prio done';
+    background-color: #820d7c;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    margin-top: 1rem;
+    
+    .title-def {
+      grid-area: title;
+      color: #ffffff;
+      font-weight: 700;
+      justify-self: center;
+      align-self: center;  
+    }
+
+    .desc-def {
+      @extend .title-def;
+      grid-area: desc;
+    }
+
+    .date-def {
+      @extend .desc-def;
+      grid-area: date;
+    }
+
+    .prio-def {
+      @extend .desc-def;
+      grid-area: prio;
+    }
+
+    .done-def {
+      @extend .desc-def;
+      grid-area: done;
+    }
+
+    
+  }
+
+  .task-list__all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5rem 0;
+    list-style: none;
+    border: 1px solid lightgray;
+
+    li {
+      width: max-content;
+    }
+  }
+
   .title-webp {
     grid-area: title;
     align-self: center;
@@ -176,20 +236,6 @@ button {
   
     &::-webkit-scrollbar-thumb:hover {
       background: #0a4b4d;
-    }
-
-    .task-list__all {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem 0;
-      list-style: none;
-      border: 1px solid lightgray;
-      border-radius: 0.5rem;
-  
-      li {
-        width: max-content;
-      }
     }
   
     .cont-newproject {
