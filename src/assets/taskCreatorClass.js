@@ -4,7 +4,7 @@ class TaskCreator {
     this.title = title;
     this.description = description;
     this.date = date;
-    this.priority = priority
+    this.priority = priority;
     this.done = false;
   }
 }

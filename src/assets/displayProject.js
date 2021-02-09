@@ -1,8 +1,8 @@
-import addToLocalProject from './addToLocal'
+import addToLocalProject from './addToLocal';
 
 
 const displayProject = (element) => {
-  const containerProject = document.querySelector('#my-projects')
+  const containerProject = document.querySelector('#my-projects');
   const project = document.createElement('p');
   project.dataset.name = element;
   const nameStore = 'projects';

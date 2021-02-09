@@ -1,4 +1,4 @@
-import getLocalProject from './getLocal'
+import getLocalProject from './getLocal';
 
 const addToLocalProject = (key, item) => {
   const project = getLocalProject(key);
@@ -9,4 +9,4 @@ const addToLocalProject = (key, item) => {
   localStorage.setItem(key, JSON.stringify(project));
 };
 
-export { addToLocalProject as default}
+export { addToLocalProject as default };

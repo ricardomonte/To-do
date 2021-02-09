@@ -1,14 +1,14 @@
 import addToLocalProject from './addToLocal';
-import getLocalProject from './getLocal'
+import getLocalProject from './getLocal';
 import taskGenerator from './taskCreatorClass';
 
 const checkLocal = (task1, task2) => {
-  const result = getLocalProject('task')
-  if(result.length === 0 ){
+  const result = getLocalProject('task');
+  if (result.length === 0) {
     addToLocalProject(...task1);
     addToLocalProject(...task2);
   }
-}
+};
 
 const taskProjectDefault = () => {
   const all = 'All';
@@ -31,6 +31,6 @@ const taskProjectDefault = () => {
   addToLocalProject('projects', project2);
 
   checkLocal(task1, task2);
-}
+};
 
-export { taskProjectDefault as default }
+export { taskProjectDefault as default };

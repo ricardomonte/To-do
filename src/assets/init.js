@@ -13,6 +13,6 @@ const init = () => {
   taskAll();
   formProject(addProjectBtn);
   clickDisplayTask(containerProjects, containerTasks);
-}
+};
 
-export {init as default}
+export { init as default };

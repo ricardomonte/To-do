@@ -8,4 +8,4 @@ const getLocalProject = (key) => {
   return project;
 };
 
-export { getLocalProject as default}
+export { getLocalProject as default };

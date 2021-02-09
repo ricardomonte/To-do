@@ -4,8 +4,8 @@ import priorityCheck from './checkPriority';
 
 const taskClose = (container) => {
   container.classList.remove('visible');
-  container.innerHTML = "";
-}
+  container.innerHTML = '';
+};
 
 const changeUlTask = (id, newValues, container) => {
   const ulElement = document.querySelector(`#${id}`);
@@ -28,7 +28,7 @@ const changeUlTask = (id, newValues, container) => {
   liDate.classList.add('date-task__proj');
   liPrio.classList.add('prio-task__proj');
   liDone.classList.add('done-task__proj');
-  
+
   ulElement.innerHTML = '';
   ulElement.append(liTitle);
   ulElement.append(liDescription);
@@ -36,8 +36,8 @@ const changeUlTask = (id, newValues, container) => {
   ulElement.append(liPrio);
   ulElement.append(liDone);
 
-  taskClose(container)
-}
+  taskClose(container);
+};
 
 
 const changeInLocal = (oldContent, container, newValues) => {
@@ -45,27 +45,27 @@ const changeInLocal = (oldContent, container, newValues) => {
   const proj = oldContent[0];
   const title = oldContent[1];
   const desc = oldContent[2];
-  const date = oldContent[3]
+  const date = oldContent[3];
   const titlen = newValues[0];
   const descn = newValues[1];
   const daten = newValues[2];
   const prion = newValues[3];
   const donen = newValues[4];
-  const lookForId = title.split(' ').join('-').concat(date)
+  const lookForId = title.split(' ').join('-').concat(date);
 
   allTask.forEach((item) => {
-    if(item.project === proj && item.title === title && item.description === desc){
+    if (item.project === proj && item.title === title && item.description === desc) {
       item.title = titlen;
       item.description = descn;
       item.date = daten;
       item.priority = prion;
-      item.done = donen === 'Completed'? true : false
+      item.done = donen === 'Completed';
     }
-  })
+  });
 
-  localStorage.setItem('task', JSON.stringify(allTask))
-  changeUlTask(lookForId, newValues, container)
-}
+  localStorage.setItem('task', JSON.stringify(allTask));
+  changeUlTask(lookForId, newValues, container);
+};
 
 const valuesForm = () => {
   const title = document.querySelector('#taskOnlyTitle').value;
@@ -74,29 +74,27 @@ const valuesForm = () => {
   const prio = document.querySelector('#taskOnlyPrio').value;
   const done = document.querySelector('#taskOnlyDOne').value;
 
-  return [ title, desc, date, prio, done ]
-}
+  return [title, desc, date, prio, done];
+};
 
 const submitForm = (form, oldContent, container) => {
-  form.addEventListener('submit',(e) => {
-    e.preventDefault()
-    const newValues = valuesForm()
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newValues = valuesForm();
     changeInLocal(oldContent, container, newValues);
-
-  })
-}
+  });
+};
 
 const taskEditAddToLocal = (container) => {
   const project = document.forms[0].id;
-  const arrElementsTask = Array.from(container.children, ({textContent}) => textContent)
+  const arrElementsTask = Array.from(container.children, ({ textContent }) => textContent)
     .filter((item) => item !== 'Delete this task' && item !== 'Close' && item !== 'Edit');
   arrElementsTask.unshift(project);
-  return arrElementsTask
-
-}
+  return arrElementsTask;
+};
 
 const taskEdit = (arr, container) => {
-  const oldValues = arr 
+  const oldValues = arr;
   const form = document.createElement('form');
   const labelTitle = document.createElement('label');
   const inputT = document.createElement('input');
@@ -122,14 +120,14 @@ const taskEdit = (arr, container) => {
   inputPrio.append(important);
   inputPrio.append(normal);
   inputPrio.append(low);
-  
+
   optionDone.textContent = 'Completed';
   optionNotDone.textContent = 'Incomplete';
   labelDone.textContent = 'if its Done';
   selectDone.append(optionDone);
   selectDone.append(optionNotDone);
 
-  
+
   inputT.value = oldValues[1];
   inputDescription.value = oldValues[2];
   inputDueDate.value = oldValues[3];
@@ -150,37 +148,35 @@ const taskEdit = (arr, container) => {
   sub.textContent = 'Update task';
 
 
-
   form.append(labelTitle);
   form.append(inputT);
   form.append(labelDesc);
-  form.append(inputDescription)
+  form.append(inputDescription);
   form.append(labelDueDate);
-  form.append(inputDueDate)
+  form.append(inputDueDate);
   form.append(labelPrio);
-  form.append(inputPrio)
+  form.append(inputPrio);
   form.append(labelDone);
-  form.append(selectDone)
+  form.append(selectDone);
   form.append(sub);
 
   container.innerHTML = '';
-  container.append(form)
-  submitForm(form, oldValues, container)
-}
+  container.append(form);
+  submitForm(form, oldValues, container);
+};
 
 const reloadElement = (arrElement) => {
   const task = document.querySelectorAll('div.task');
-  task.forEach((item) => { 
-    if(item.innerText.includes(arrElement[0]) && item.innerText.includes(arrElement[1])){
-      item.remove()
+  task.forEach((item) => {
+    if (item.innerText.includes(arrElement[0]) && item.innerText.includes(arrElement[1])) {
+      item.remove();
     }
   });
-
 };
 
 const taskDelete = (container, parent) => {
   const project = document.forms[0].id;
-  const arrElementsTask = Array.from(container.children, ({textContent}) => textContent)
+  const arrElementsTask = Array.from(container.children, ({ textContent }) => textContent)
     .filter((item) => item !== 'Delete this task' && item !== 'Close' && item !== 'Edit');
   const title = arrElementsTask[0];
   const desc = arrElementsTask[1];
@@ -196,34 +192,33 @@ const taskDelete = (container, parent) => {
     return true;
   });
 
-  localStorage.setItem('task', JSON.stringify(allTaskWout))
+  localStorage.setItem('task', JSON.stringify(allTaskWout));
 
-  taskClose(parent)
-  reloadElement(arrElementsTask)
-}
+  taskClose(parent);
+  reloadElement(arrElementsTask);
+};
 
 const taskClickEdit = (btn, containerTask) => {
   btn.addEventListener('click', () => {
     const parent = containerTask;
-    const arrElement = taskEditAddToLocal(containerTask.firstElementChild, parent)
-    console.log(arrElement)
-    taskEdit(arrElement, parent)
-  })
-}
+    const arrElement = taskEditAddToLocal(containerTask.firstElementChild, parent);
+    console.log(arrElement);
+    taskEdit(arrElement, parent);
+  });
+};
 
 const taskClickDelete = (btn, containerTask) => {
-
   btn.addEventListener('click', () => {
     const parent = containerTask;
-    taskDelete(containerTask.firstElementChild, parent)    
-  })
-}
+    taskDelete(containerTask.firstElementChild, parent);
+  });
+};
 
 const taskClickClose = (btn, containerTask) => {
   btn.addEventListener('click', () => {
     taskClose(containerTask);
-  })
-}
+  });
+};
 
 const taskOnlyDisplay = (title, description, date, priority, done) => {
   const containerTask = document.querySelector('#task-inv');
@@ -243,8 +238,8 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   taskPrio.textContent = priority;
   taskDone.textContent = done;
   btnDelete.textContent = 'Delete this task';
-  btnEdit.textContent = "Edit";
-  btnClose.textContent = "Close";
+  btnEdit.textContent = 'Edit';
+  btnClose.textContent = 'Close';
 
   taskTitle.classList.add('title-task__only');
   taskDesc.classList.add('desc-task__only');
@@ -256,29 +251,29 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   btnClose.id = 'close_task';
   btnEdit.id = 'edit_task';
   btnDelete.id = 'delete_task';
-  taskPrio.classList.add(priorityCheck(priority))
-  containerAll.append(taskTitle)
-  containerAll.append(taskDesc)
-  containerAll.append(taskDate)
-  containerAll.append(taskPrio)
-  containerAll.append(taskDone)
-  containerAll.append(btnDelete)
-  containerAll.append(btnEdit)
-  containerAll.append(btnClose)
+  taskPrio.classList.add(priorityCheck(priority));
+  containerAll.append(taskTitle);
+  containerAll.append(taskDesc);
+  containerAll.append(taskDate);
+  containerAll.append(taskPrio);
+  containerAll.append(taskDone);
+  containerAll.append(btnDelete);
+  containerAll.append(btnEdit);
+  containerAll.append(btnClose);
 
-  containerAll.classList.add('only-one__task')
-  containerTask.append(containerAll)
-  containerTask.classList.toggle('visible')
+  containerAll.classList.add('only-one__task');
+  containerTask.append(containerAll);
+  containerTask.classList.toggle('visible');
 
   taskClickDelete(btnDelete, containerTask);
   taskClickEdit(btnEdit, containerTask);
   taskClickClose(btnClose, containerTask);
-}
+};
 
 
 const taskOnly = (ultask) => {
-  const arrListTask = Array.from(ultask.children, ({textContent}) => textContent)
-  taskOnlyDisplay(...arrListTask)
-}
+  const arrListTask = Array.from(ultask.children, ({ textContent }) => textContent);
+  taskOnlyDisplay(...arrListTask);
+};
 
-export { taskOnly as default }
+export { taskOnly as default };

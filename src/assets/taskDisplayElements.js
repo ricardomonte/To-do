@@ -21,16 +21,16 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   liPrio.textContent = priority;
   container.classList.add('cont-form');
   containerContent.classList.add('task');
-  liPrio.classList.add( priorityCheck(priority) )
-  const unionUlId = title.split(' ').join('-').concat(date)
+  liPrio.classList.add(priorityCheck(priority));
+  const unionUlId = title.split(' ').join('-').concat(date);
 
   ulElement.classList.add('task-list');
 
-  liTitle.classList.add('title-task__proj')
-  liDescription.classList.add('desc-task__proj')
-  liDate.classList.add('date-task__proj')
-  liPrio.classList.add('prio-task__proj')
-  liDone.classList.add('done-task__proj')
+  liTitle.classList.add('title-task__proj');
+  liDescription.classList.add('desc-task__proj');
+  liDate.classList.add('date-task__proj');
+  liPrio.classList.add('prio-task__proj');
+  liDone.classList.add('done-task__proj');
 
 
   ulElement.id = unionUlId;
@@ -41,7 +41,7 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   ulElement.append(liDone);
   const listDef = defaultList();
   listDef.classList.remove('task-list__default');
-  listDef.classList.add('task-list__defproj')
+  listDef.classList.add('task-list__defproj');
   containerContent.append(listDef);
   containerContent.append(ulElement);
   parent.append(containerContent);

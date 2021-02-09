@@ -1,7 +1,7 @@
 import taskGenerator from './taskCreatorClass';
 import addToLocalProject from './addToLocal';
 import taskInLocal from './taskInLocal';
-import taskDisplayElements from './taskDisplayElements'
+import taskDisplayElements from './taskDisplayElements';
 
 const removeElement = (task) => {
   task.forEach((item) => { item.remove(); });
@@ -23,16 +23,15 @@ const getValueFormTask = () => {
 };
 
 const createNewTask = (element) => {
-
   element.addEventListener('submit', (e) => {
     e.preventDefault();
-    const parent = element.parentElement
+    const parent = element.parentElement;
     const valuesTask = getValueFormTask();
     const task = taskGenerator(...valuesTask);
     addToLocalProject(...task);
-    const projectArr = taskInLocal(element.id)
-    parent.append(element)
-    reloadElement()
+    const projectArr = taskInLocal(element.id);
+    parent.append(element);
+    reloadElement();
     projectArr.map((item) => {
       taskDisplayElements(parent, item.title, item.description, item.date, item.priority, item.done);
     });
@@ -103,11 +102,11 @@ const taskForm = (hiden) => {
   form.append(divT);
   form.append(divD);
   form.append(divDa);
-  form.append(divP)
+  form.append(divP);
   form.append(sub);
   form.append(hidenInput);
 
-  createNewTask(form)
+  createNewTask(form);
   return form;
 };
 export { taskForm as default };

@@ -1,11 +1,10 @@
 const priorityCheck = (priority) => {
-  if(priority === 'Important'){
+  if (priority === 'Important') {
     return 'pill-important';
-  } else if(priority === 'Normal'){
+  } if (priority === 'Normal') {
     return 'pill-normal';
-  } else {
-    return 'pill-low';
   }
-}
+  return 'pill-low';
+};
 
-export {priorityCheck as default}
+export { priorityCheck as default };

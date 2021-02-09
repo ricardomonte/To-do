@@ -1,8 +1,8 @@
 const isDone = (done) => {
   if (!done) {
-    return `Incomplete`;
+    return 'Incomplete';
   }
-  return `Completed`;
+  return 'Completed';
 };
 
-export { isDone as default }
+export { isDone as default };

@@ -13,11 +13,11 @@ const defaultList = () => {
   liDate.textContent = 'Date';
   liPrio.textContent = 'Priority';
 
-  liDone.classList.add('done-def')
-  liTitle.classList.add('title-def')
-  liDescription.classList.add('desc-def')
-  liDate.classList.add('date-def')
-  liPrio.classList.add('prio-def')
+  liDone.classList.add('done-def');
+  liTitle.classList.add('title-def');
+  liDescription.classList.add('desc-def');
+  liDate.classList.add('date-def');
+  liPrio.classList.add('prio-def');
 
 
   ulElement.classList.add('task-list__default');
@@ -28,6 +28,6 @@ const defaultList = () => {
   ulElement.append(liDone);
 
   return ulElement;
-}
+};
 
-export { defaultList as default }
+export { defaultList as default };

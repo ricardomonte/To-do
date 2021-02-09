@@ -1,5 +1,5 @@
 import displayProject from './displayProject';
-import getLocalProject from './getLocal'
+import getLocalProject from './getLocal';
 
 const projects = () => {
   const nameStore = 'projects';

@@ -11,4 +11,4 @@ const taskDisplayNoTask = (taskContainer, value) => {
   taskContainer.append(containerContent);
 };
 
-export { taskDisplayNoTask as default }
+export { taskDisplayNoTask as default };

@@ -1,19 +1,19 @@
-import displayProject from './displayProject'
+import displayProject from './displayProject';
 
 const displayNewProject = (element) => {
   element.addEventListener('click', (e) => {
     const input = e.target.previousElementSibling;
     if (e.target.id === 'lol') {
       if (input.value) {
-        displayProject(input.value)
-        input.value = "";
+        displayProject(input.value);
+        input.value = '';
       }
     }
   });
 };
 
 const formProject = (element, myProject) => {
-  const containerInput = document.createElement('div')
+  const containerInput = document.createElement('div');
   const input = document.createElement('INPUT');
   const button = document.createElement('button');
   button.textContent = 'Add project';
@@ -24,7 +24,7 @@ const formProject = (element, myProject) => {
   containerInput.append(input);
   containerInput.append(button);
   element.append(containerInput);
-  displayNewProject(containerInput, myProject)
+  displayNewProject(containerInput, myProject);
 };
 
 export { formProject as default };

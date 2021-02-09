@@ -1,4 +1,4 @@
-import getLocalProject from './getLocal'
+import getLocalProject from './getLocal';
 
 const taskInLocal = (titleProject) => {
   const result = getLocalProject('task');
@@ -9,6 +9,6 @@ const taskInLocal = (titleProject) => {
     return false;
   });
   return task;
-}
+};
 
-export { taskInLocal as default }
+export { taskInLocal as default };
