@@ -20,7 +20,7 @@ const formProject = (element, myProject) => {
   button.id = 'lol';
   input.id = 'project';
   containerInput.id = 'form-addProj';
-  containerInput.classList.add('cont-newproject');
+  // containerInput.classList.add('cont-newproject');
   containerInput.append(input);
   containerInput.append(button);
   element.append(containerInput);

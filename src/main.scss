@@ -352,6 +352,20 @@ button {
     background-color: #7c820d;
   }
 
+  .cont-newProject {
+    grid-area: addproj;
+    justify-self: left;
+    padding-top: 2rem;
+    height: max-content;
+    width: 22rem;
+    text-align: center;
+
+    input {
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+
   .container-task {
     grid-area: tasks;
     width: 100%;
@@ -375,20 +389,6 @@ button {
 
     &::-webkit-scrollbar-thumb:hover {
       background: #0a4b4d;
-    }
-
-    .cont-newproject {
-      grid-area: addproj;
-      justify-self: center;
-      margin-top: 2rem;
-      height: max-content;
-      width: 22rem;
-      display: flex;
-      justify-content: space-between;
-
-      input {
-        border-radius: 0.5rem;
-      }
     }
 
     form {
@@ -448,6 +448,20 @@ button {
       }
     }
   }
+
+  // .cont-newProject {
+  //   grid-area: addproj;
+  //   justify-self: left;
+  //   padding-top: 2rem;
+  //   height: max-content;
+  //   width: 22rem;
+  //   text-align: center;
+
+  //   input {
+  //     margin-bottom: 0.5rem;
+  //     border-radius: 0.5rem;
+  //   }
+  // }
 
   .task {
     height: max-content;
