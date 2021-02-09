@@ -15,7 +15,7 @@ The todo-list project was built as the third project of the JavaScript module fr
 
 ##  :red_circle: Live Demo:
 
-[Live demo]()
+[Live demo](https://ricardomonte.github.io/To-do/)
 
 ##  :construction_worker: Getting Started
 
