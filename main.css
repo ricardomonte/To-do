@@ -95,8 +95,8 @@ button {
       display: grid;
       grid-template-columns: repeat(1, 2fr);
       grid-template-rows: repeat(11, 40px);
-      row-gap: 5px;
-      margin: 2rem; }
+      row-gap: 10px;
+      padding: 2rem; }
   .container-total .list-all__container {
     padding: 0 0.5rem; }
     .container-total .list-all__container .task-list__default {
