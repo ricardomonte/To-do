@@ -55,6 +55,41 @@ button {
     display: none;
   }
 
+  .container-project {
+    grid-area: projects;
+    background-color: #820d7c;
+    color: #fff;
+    height: 100%;
+    border-bottom-left-radius: 0.5rem;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #2f7e83;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #0a4b4d;
+    }
+
+    p {
+      font-size: 1.5em;
+      font-style: oblique;
+      text-transform: uppercase;
+      margin-left: 0.8rem;
+      cursor: pointer;
+      width: max-content;
+    }
+  }
+
   .visible {
     display: flex;
     flex-direction: column;
@@ -79,14 +114,14 @@ button {
       grid-template-columns: repeat(3, 2fr);
       grid-template-rows: repeat(8, 40px);
       grid-template-areas:
-      '. . .'
-      '. . .' 
-      'title title title'
-      'desc desc desc'
-      'date date date'
-      'prio prio prio'
-      'done done done'
-      'btn1 btn2 btn3';
+        '. . .'
+        '. . .'
+        'title title title'
+        'desc desc desc'
+        'date date date'
+        'prio prio prio'
+        'done done done'
+        'btn1 btn2 btn3';
 
       p {
         width: max-content;
@@ -97,12 +132,13 @@ button {
         justify-self: center;
         align-self: center;
       }
+
       .desc-task__only {
         @extend .title-task__only;
 
         grid-area: desc;
       }
-      
+
       .date-task__only {
         @extend .title-task__only;
 
@@ -162,44 +198,49 @@ button {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: 30px;
-      grid-template-areas: 
-      'proj title desc date prio done';
+      grid-template-areas: 'proj title desc date prio done';
       background-color: #820d7c;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
       margin-top: 1rem;
-            
+
       .title-def {
         grid-area: title;
-        color: #ffffff;
+        color: #fff;
         font-weight: 700;
         justify-self: center;
-        align-self: center;  
+        align-self: center;
       }
+
       .proj-def {
         @extend .title-def;
+
         grid-area: proj;
       }
-  
+
       .desc-def {
         @extend .title-def;
+
         grid-area: desc;
       }
-  
+
       .date-def {
         @extend .desc-def;
+
         grid-area: date;
       }
-  
+
       .prio-def {
         @extend .desc-def;
+
         grid-area: prio;
       }
-  
+
       .done-def {
         @extend .desc-def;
+
         grid-area: done;
-      }  
+      }
     }
 
     .task-list__all {
@@ -209,9 +250,8 @@ button {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: 30px;
-      grid-template-areas: 
-      'proja titlea desca datea prioa donea';
-  
+      grid-template-areas: 'proja titlea desca datea prioa donea';
+
       li {
         width: max-content;
       }
@@ -220,16 +260,18 @@ button {
         grid-area: proja;
         font-weight: 700;
         justify-self: center;
-        align-self: center; 
+        align-self: center;
       }
 
       .title-all {
         @extend .proj-all;
+
         grid-area: titlea;
       }
 
       .desc-all {
         @extend .proj-all;
+
         grid-area: desca;
         width: 150px;
         overflow-y: scroll;
@@ -237,24 +279,23 @@ button {
 
       .date-all {
         @extend .proj-all;
+
         grid-area: datea;
       }
 
       .prio-all {
         @extend .proj-all;
+
         grid-area: prioa;
       }
 
       .done-all {
         @extend .proj-all;
+
         grid-area: donea;
       }
-
-
     }
-  
   }
-
 
   .title-webp {
     grid-area: title;
@@ -271,7 +312,7 @@ button {
     grid-area: titlesp;
     align-self: center;
     justify-self: center;
-    background-color: #ffffff;
+    background-color: #fff;
     border-top-left-radius: 0.5rem;
     width: 100%;
     height: 100%;
@@ -279,21 +320,20 @@ button {
   }
 
   .cont-titlest {
-
     grid-area: titlet;
     align-self: flex-start;
     justify-self: center;
     background-color: #820d7c;
-    color: #ffffff;
+    color: #fff;
     width: 100%;
     height: 100%;
     text-align: center;
-    border-top-right-radius: 0.5rem ;
-  } 
+    border-top-right-radius: 0.5rem;
+  }
 
   .pill-important {
     color: #f7f7f7;
-    background-color:  #C70039;
+    background-color: #c70039;
     width: max-content;
     padding-right: 0.6em;
     padding-left: 0.6em;
@@ -302,47 +342,14 @@ button {
 
   .pill-normal {
     @extend .pill-important;
+
     background-color: #0d7c82;
   }
 
   .pill-low {
     @extend .pill-important;
-    background-color: #7c820d;
-  }
 
-  .container-project {
-    grid-area: projects;
-    background-color: #820d7c;
-    color: #fff;
-    height: 100%;
-    border-bottom-left-radius: 0.5rem;
-    overflow-y: scroll;
-  
-    &::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: white;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background: #2f7e83;
-    }
-  
-    &::-webkit-scrollbar-thumb:hover {
-      background: #0a4b4d;
-    }
-  
-    p {
-      font-size: 1.5em;
-      font-style: oblique;
-      text-transform: uppercase;
-      margin-left: 0.8rem;
-      cursor: pointer;
-      width: max-content;
-    }
+    background-color: #7c820d;
   }
 
   .container-task {
@@ -352,24 +359,24 @@ button {
     justify-self: left;
     background-color: #fff;
     overflow-y: scroll;
-  
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
     }
-  
+
     &::-webkit-scrollbar-track {
       background: white;
     }
-  
+
     &::-webkit-scrollbar-thumb {
       background: #2f7e83;
     }
-  
+
     &::-webkit-scrollbar-thumb:hover {
       background: #0a4b4d;
     }
-  
+
     .cont-newproject {
       grid-area: addproj;
       justify-self: center;
@@ -378,7 +385,7 @@ button {
       width: 22rem;
       display: flex;
       justify-content: space-between;
-  
+
       input {
         border-radius: 0.5rem;
       }
@@ -395,9 +402,8 @@ button {
         'buton buton';
       column-gap: 2rem;
       row-gap: 2rem;
-      margin-left: 0 0.5rem;
+      margin: 0 0.5rem;
       padding: 2rem 0;
-
 
       label {
         text-align: center;
@@ -439,9 +445,10 @@ button {
       .cont-fbuton {
         grid-area: buton;
         justify-self: center;
-      } 
+      }
     }
   }
+
   .task {
     height: max-content;
     text-align: center;
@@ -452,38 +459,41 @@ button {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: 30px;
-      grid-template-areas: 
-      'title desc date prio done';
+      grid-template-areas: 'title desc date prio done';
       background-color: #820d7c;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
       margin-top: 1rem;
-            
+
       .title-def {
         grid-area: title;
-        color: #ffffff;
+        color: #fff;
         font-weight: 700;
         justify-self: center;
-        align-self: center;  
+        align-self: center;
       }
-    
+
       .desc-def {
         @extend .title-def;
+
         grid-area: desc;
       }
-    
+
       .date-def {
         @extend .desc-def;
+
         grid-area: date;
       }
-    
+
       .prio-def {
         @extend .desc-def;
+
         grid-area: prio;
       }
-    
+
       .done-def {
         @extend .desc-def;
+
         grid-area: done;
       }
     }
@@ -495,45 +505,45 @@ button {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: 100px;
-      grid-template-areas: 
-      'titlea desca datea prioa donea';
-    
+      grid-template-areas: 'titlea desca datea prioa donea';
+
       li {
         width: max-content;
       }
-    
+
       .title-task__proj {
         grid-area: titlea;
         justify-self: center;
         align-self: center;
         height: 100%;
       }
-    
+
       .desc-task__proj {
         @extend .title-task__proj;
+
         grid-area: desca;
         width: 170px;
         word-wrap: break-word;
         overflow-y: scroll;
       }
-    
+
       .date-task__proj {
         @extend .title-task__proj;
+
         grid-area: datea;
       }
-    
+
       .prio-task__proj {
         grid-area: prioa;
         justify-self: center;
         align-self: flex-start;
       }
-    
+
       .done-task__proj {
         @extend .title-task__proj;
+
         grid-area: donea;
       }
     }
   }
 }
-
-
