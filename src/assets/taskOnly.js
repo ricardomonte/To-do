@@ -6,8 +6,8 @@ const taskClose = (container) => {
   container.innerHTML = "";
 }
 
-const changeUlTask = (date, newValues, container) => {
-  const ulElement = document.querySelector(`#task-${date}`);
+const changeUlTask = (id, newValues, container) => {
+  const ulElement = document.querySelector(`#${id}`);
   const liTitle = document.createElement('li');
   const liDescription = document.createElement('li');
   const liDate = document.createElement('li');
@@ -42,6 +42,7 @@ const changeInLocal = (oldContent, container, newValues) => {
   const daten = newValues[2];
   const prion = newValues[3];
   const donen = newValues[4];
+  const lookForId = title.split(' ').join('-').concat(date)
 
   allTask.forEach((item) => {
     if(item.project === proj && item.title === title && item.description === desc){
@@ -54,7 +55,7 @@ const changeInLocal = (oldContent, container, newValues) => {
   })
 
   localStorage.setItem('task', JSON.stringify(allTask))
-  changeUlTask(date, newValues, container)
+  changeUlTask(lookForId, newValues, container)
 }
 
 const valuesForm = () => {
@@ -85,8 +86,8 @@ const taskEditAddToLocal = (container) => {
 
 }
 
-const taskEdit = (container) => {
-  const oldValues = taskEditAddToLocal(container)
+const taskEdit = (arr, container) => {
+  const oldValues = arr 
   const form = document.createElement('form');
   const labelTitle = document.createElement('label');
   const inputT = document.createElement('input');
@@ -158,10 +159,10 @@ const taskEdit = (container) => {
   submitForm(form, oldValues, container)
 }
 
-const reloadElement = (title) => {
+const reloadElement = (arrElement) => {
   const task = document.querySelectorAll('div.task');
   task.forEach((item) => { 
-    if(item.innerText.includes(title)){
+    if(item.innerText.includes(arrElement[0]) && item.innerText.includes(arrElement[1])){
       item.remove()
     }
   });
@@ -188,22 +189,26 @@ const taskDelete = (container) => {
 
   localStorage.setItem('task', JSON.stringify(allTaskWout))
 
-  reloadElement(title)
   taskClose(container)
+  reloadElement(arrElementsTask)
 }
 
-const taskClickOnly = (containerTask) => {
-  containerTask.addEventListener('click', (e) => {
-    if(e.target.id === 'close_task') {
-      taskClose(containerTask);
-    }
-    if(e.target.id === 'edit_task'){
-      taskEdit(containerTask)
-    }
-    if(e.target.id === 'delete_task') {
-      
-      taskDelete(containerTask)
-    }
+const taskClickEdit = (btn, containerTask) => {
+  btn.addEventListener('click', () => {
+    const arrElement = taskEditAddToLocal(containerTask)
+    taskEdit(arrElement, containerTask)
+  })
+}
+
+const taskClickDelete = (btn, containerTask) => {
+  btn.addEventListener('click', () => {
+    taskDelete(containerTask)    
+  })
+}
+
+const taskClickClose = (btn, containerTask) => {
+  btn.addEventListener('click', () => {
+    taskClose(containerTask);
   })
 }
 
@@ -242,8 +247,9 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
 
   containerTask.classList.toggle('visible')
 
-  taskClickOnly(containerTask);
-
+  taskClickDelete(btnDelete, containerTask);
+  taskClickEdit(btnEdit, containerTask);
+  taskClickClose(btnClose, containerTask);
 }
 
 

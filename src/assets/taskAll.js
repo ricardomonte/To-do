@@ -11,6 +11,8 @@ const appending = (project, title, description, date, priority, done) => {
   const liProjprio = document.createElement('li');
 
   ulList.id = 'allTodos';
+  ulList.classList.add('task-list__all')
+
 
   liProjName.textContent = project;
   liProjTitle.textContent = title;

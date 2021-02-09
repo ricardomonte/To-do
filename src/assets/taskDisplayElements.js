@@ -27,9 +27,11 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   container.classList.add('cont-form');
   containerContent.classList.add('task');
 
+  const alalala = title.split(' ').join('-').concat(date)
+
 
   ulElement.classList.add('task-list');
-  ulElement.id = `task-${date}`;
+  ulElement.id = alalala;
   ulElement.append(liTitle);
   ulElement.append(liDescription);
   ulElement.append(liDate);
