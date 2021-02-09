@@ -15,11 +15,8 @@ const changeUlTask = (id, newValues, container) => {
   const liPrio = document.createElement('li');
   const liDone = document.createElement('li');
 
-  liTitle.textContent = newValues[0];
-  liDescription.textContent = newValues[1];
-  liDate.textContent = newValues[2];
-  liPrio.textContent = newValues[3];
-  liDone.textContent = newValues[4];
+  [liTitle.textContent, liDescription.textContent,
+    liDate.textContent, liPrio.textContent, liDone.textContent] = newValues;
 
   liPrio.classList.add(priorityCheck(newValues[3]));
 
@@ -95,6 +92,7 @@ const taskEditAddToLocal = (container) => {
 
 const taskEdit = (arr, container) => {
   const oldValues = arr;
+  let someOld = [];
   const form = document.createElement('form');
   const labelTitle = document.createElement('label');
   const inputT = document.createElement('input');
@@ -127,10 +125,13 @@ const taskEdit = (arr, container) => {
   selectDone.append(optionDone);
   selectDone.append(optionNotDone);
 
+  someOld = [oldValues[1], oldValues[2], oldValues[3]];
 
-  inputT.value = oldValues[1];
-  inputDescription.value = oldValues[2];
-  inputDueDate.value = oldValues[3];
+  [inputT.value, inputDescription.value, inputDueDate.value] = someOld;
+
+  // inputT.value = oldValues[1];
+  // inputDescription.value = oldValues[2];
+  // inputDueDate.value = oldValues[3];
 
   inputT.id = 'taskOnlyTitle';
   inputDescription.id = 'taskOnlyDesc';
@@ -186,7 +187,8 @@ const taskDelete = (container, parent) => {
   const allTask = getLocalProject('task');
 
   const allTaskWout = allTask.filter((item) => {
-    if (item.project === project && item.title === title && item.description === desc && item.date === date && item.priority === prio) {
+    if (item.project === project && item.title === title
+      && item.description === desc && item.date === date && item.priority === prio) {
       return false;
     }
     return true;
@@ -202,7 +204,6 @@ const taskClickEdit = (btn, containerTask) => {
   btn.addEventListener('click', () => {
     const parent = containerTask;
     const arrElement = taskEditAddToLocal(containerTask.firstElementChild, parent);
-    console.log(arrElement);
     taskEdit(arrElement, parent);
   });
 };

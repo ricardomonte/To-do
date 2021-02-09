@@ -48,7 +48,7 @@ const appending = (project, title, description, date, priority, done) => {
 };
 
 const displayAll = (alltasks) => {
-  alltasks.map((item) => {
+  alltasks.forEach((item) => {
     appending(item.project, item.title, item.description, item.date, item.priority, item.done);
   });
 };

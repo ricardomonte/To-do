@@ -21,8 +21,9 @@ const clickDisplayTask = (element, sibling) => {
       sibling.textContent = '';
       const form = taskForm(e.target.textContent);
       sibling.append(form);
-      task.map((item) => {
-        taskDisplayElements(sibling, item.title, item.description, item.date, item.priority, item.done);
+      task.forEach((item) => {
+        taskDisplayElements(sibling, item.title, item.description,
+          item.date, item.priority, item.done);
       });
     }
   });

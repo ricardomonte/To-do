@@ -32,8 +32,9 @@ const createNewTask = (element) => {
     const projectArr = taskInLocal(element.id);
     parent.append(element);
     reloadElement();
-    projectArr.map((item) => {
-      taskDisplayElements(parent, item.title, item.description, item.date, item.priority, item.done);
+    projectArr.forEach((item) => {
+      taskDisplayElements(parent, item.title, item.description,
+        item.date, item.priority, item.done);
     });
     element.reset();
   });
