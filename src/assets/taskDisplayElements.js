@@ -1,12 +1,6 @@
 import taskOnlyClick from './taskOnlyClick';
-
-const isDone = (done) => {
-  if (!done) {
-    return `Incomplete`;
-  }
-  return `Completed`;
-};
-
+import priorityCheck from './checkPriority';
+import isDone from './isDone';
 
 const taskDisplayElements = (parent, title, description, date, priority, done) => {
   const container = document.createElement('div');
@@ -26,9 +20,8 @@ const taskDisplayElements = (parent, title, description, date, priority, done) =
   liPrio.textContent = priority;
   container.classList.add('cont-form');
   containerContent.classList.add('task');
-
+  liPrio.classList.add( priorityCheck(priority) )
   const alalala = title.split(' ').join('-').concat(date)
-
 
   ulElement.classList.add('task-list');
   ulElement.id = alalala;

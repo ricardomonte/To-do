@@ -1,4 +1,5 @@
 import getLocalProject from './getLocal';
+import priorityCheck from './checkPriority';
 
 
 const taskClose = (container) => {
@@ -20,6 +21,7 @@ const changeUlTask = (id, newValues, container) => {
   liPrio.textContent = newValues[3];
   liDone.textContent = newValues[4];
 
+  liPrio.classList.add(priorityCheck(newValues[3]))
   ulElement.innerHTML = '';
   ulElement.append(liTitle);
   ulElement.append(liDescription);
@@ -235,7 +237,7 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   btnClose.id = 'close_task';
   btnEdit.id = 'edit_task';
   btnDelete.id = 'delete_task';
-
+  taskPrio.classList.add(priorityCheck(priority))
   containerTask.append(taskTitle)
   containerTask.append(taskDesc)
   containerTask.append(taskDate)

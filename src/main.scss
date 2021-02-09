@@ -100,6 +100,24 @@ button {
     margin: 0;
   }
 
+  .pill-important {
+    color: #f7f7f7;
+    background-color:  #C70039;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+  }
+
+  .pill-normal {
+    @extend .pill-important;
+    background-color: #0d7c82;
+  }
+
+  .pill-low {
+    @extend .pill-important;
+    background-color: #7c820d;
+  }
+
   .container-project {
     grid-area: projects;
     background-color: #820d7c;
