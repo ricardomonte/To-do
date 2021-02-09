@@ -211,6 +211,16 @@ button {
     background-color: #0d7c82; }
   .container-total .pill-low {
     background-color: #7c820d; }
+  .container-total .cont-newProject {
+    grid-area: addproj;
+    justify-self: left;
+    padding-top: 2rem;
+    height: max-content;
+    width: 22rem;
+    text-align: center; }
+    .container-total .cont-newProject input {
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem; }
   .container-total .container-task {
     grid-area: tasks;
     width: 100%;
@@ -227,16 +237,6 @@ button {
       background: #2f7e83; }
     .container-total .container-task::-webkit-scrollbar-thumb:hover {
       background: #0a4b4d; }
-    .container-total .container-task .cont-newproject {
-      grid-area: addproj;
-      justify-self: center;
-      margin-top: 2rem;
-      height: max-content;
-      width: 22rem;
-      display: flex;
-      justify-content: space-between; }
-      .container-total .container-task .cont-newproject input {
-        border-radius: 0.5rem; }
     .container-total .container-task form {
       display: grid;
       grid-template-columns: repeat(2, 50%);
