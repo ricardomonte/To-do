@@ -77,6 +77,16 @@ button {
     border-top-right-radius: 0.5rem; }
   .container-total p {
     margin: 0; }
+  .container-total .pill-important, .container-total .pill-normal, .container-total .pill-low {
+    color: #f7f7f7;
+    background-color: #C70039;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem; }
+  .container-total .pill-normal {
+    background-color: #0d7c82; }
+  .container-total .pill-low {
+    background-color: #7c820d; }
   .container-total .container-project {
     grid-area: projects;
     background-color: #820d7c;
