@@ -11,7 +11,9 @@ const appending = (project, title, description, date, priority, done) => {
   const liProjDate = document.createElement('li');
   const liProjDone = document.createElement('li');
   const liProjprio = document.createElement('li');
-  const containerUl = document.createElement('div')
+  const containerUl = document.createElement('div');
+  const defaultProject = document.createElement('li');
+  const dtList = defaultList()
   ulList.id = 'allTodos';
   ulList.classList.add('task-list__all')
   containerUl.classList.add('list-all__container')
@@ -22,7 +24,16 @@ const appending = (project, title, description, date, priority, done) => {
   liProjDate.textContent = date;
   liProjDone.textContent = textDone;
   liProjprio.textContent = priority
+  defaultProject.textContent = 'Project';
 
+  defaultProject.classList.add('proj-def')
+
+  liProjName.classList.add('proj-all')
+  liProjTitle.classList.add('title-all')
+  liProjDesc.classList.add('desc-all')
+  liProjDate.classList.add('date-all')
+  liProjDone.classList.add('prio-all')
+  liProjprio.classList.add('done-all')
   liProjprio.classList.add(priorityCheck(priority))
   ulList.append(liProjName);
   ulList.append(liProjTitle);
@@ -30,7 +41,8 @@ const appending = (project, title, description, date, priority, done) => {
   ulList.append(liProjDate);
   ulList.append(liProjDone);
   ulList.append(liProjprio);
-  containerUl.append(defaultList())
+  dtList.prepend(defaultProject)
+  containerUl.append(dtList)
   containerUl.append(ulList)
   container.append(containerUl);
 };

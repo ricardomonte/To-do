@@ -21,7 +21,14 @@ const changeUlTask = (id, newValues, container) => {
   liPrio.textContent = newValues[3];
   liDone.textContent = newValues[4];
 
-  liPrio.classList.add(priorityCheck(newValues[3]))
+  liPrio.classList.add(priorityCheck(newValues[3]));
+
+  liTitle.classList.add('title-task__proj');
+  liDescription.classList.add('desc-task__proj');
+  liDate.classList.add('date-task__proj');
+  liPrio.classList.add('prio-task__proj');
+  liDone.classList.add('done-task__proj');
+  
   ulElement.innerHTML = '';
   ulElement.append(liTitle);
   ulElement.append(liDescription);
@@ -171,7 +178,7 @@ const reloadElement = (arrElement) => {
 
 };
 
-const taskDelete = (container) => {
+const taskDelete = (container, parent) => {
   const project = document.forms[0].id;
   const arrElementsTask = Array.from(container.children, ({textContent}) => textContent)
     .filter((item) => item !== 'Delete this task' && item !== 'Close' && item !== 'Edit');
@@ -191,20 +198,24 @@ const taskDelete = (container) => {
 
   localStorage.setItem('task', JSON.stringify(allTaskWout))
 
-  taskClose(container)
+  taskClose(parent)
   reloadElement(arrElementsTask)
 }
 
 const taskClickEdit = (btn, containerTask) => {
   btn.addEventListener('click', () => {
-    const arrElement = taskEditAddToLocal(containerTask)
-    taskEdit(arrElement, containerTask)
+    const parent = containerTask;
+    const arrElement = taskEditAddToLocal(containerTask.firstElementChild, parent)
+    console.log(arrElement)
+    taskEdit(arrElement, parent)
   })
 }
 
 const taskClickDelete = (btn, containerTask) => {
+
   btn.addEventListener('click', () => {
-    taskDelete(containerTask)    
+    const parent = containerTask;
+    taskDelete(containerTask.firstElementChild, parent)    
   })
 }
 
@@ -216,6 +227,7 @@ const taskClickClose = (btn, containerTask) => {
 
 const taskOnlyDisplay = (title, description, date, priority, done) => {
   const containerTask = document.querySelector('#task-inv');
+  const containerAll = document.createElement('div');
   const taskTitle = document.createElement('p');
   const taskDesc = document.createElement('p');
   const taskDate = document.createElement('p');
@@ -234,19 +246,28 @@ const taskOnlyDisplay = (title, description, date, priority, done) => {
   btnEdit.textContent = "Edit";
   btnClose.textContent = "Close";
 
+  taskTitle.classList.add('title-task__only');
+  taskDesc.classList.add('desc-task__only');
+  taskDate.classList.add('date-task__only');
+  taskPrio.classList.add('prio-task__only');
+  taskDone.classList.add('done-task__only');
+
+
   btnClose.id = 'close_task';
   btnEdit.id = 'edit_task';
   btnDelete.id = 'delete_task';
   taskPrio.classList.add(priorityCheck(priority))
-  containerTask.append(taskTitle)
-  containerTask.append(taskDesc)
-  containerTask.append(taskDate)
-  containerTask.append(taskPrio)
-  containerTask.append(taskDone)
-  containerTask.append(btnDelete)
-  containerTask.append(btnEdit)
-  containerTask.append(btnClose)
+  containerAll.append(taskTitle)
+  containerAll.append(taskDesc)
+  containerAll.append(taskDate)
+  containerAll.append(taskPrio)
+  containerAll.append(taskDone)
+  containerAll.append(btnDelete)
+  containerAll.append(btnEdit)
+  containerAll.append(btnClose)
 
+  containerAll.classList.add('only-one__task')
+  containerTask.append(containerAll)
   containerTask.classList.toggle('visible')
 
   taskClickDelete(btnDelete, containerTask);

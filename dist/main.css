@@ -13,7 +13,8 @@ ul {
   list-style: none; }
 
 body {
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  margin: 0; }
 
 button {
   cursor: pointer;
@@ -47,62 +48,128 @@ button {
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 15%;
+    width: 100%;
+    height: 100%;
+    top: 0;
     left: 0;
     right: 0;
-    margin: auto;
-    background-color: #fff;
-    border: 1px solid lightgray;
-    border-radius: 0.5rem; }
+    background-color: rgba(0, 0, 0, 0.603); }
+    .container-total .visible .only-one__task {
+      background-color: white;
+      width: 50%;
+      height: 40%;
+      border: 1px solid lightgrey;
+      border-radius: 0.5rem;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(3, 2fr);
+      grid-template-rows: repeat(8, 40px);
+      grid-template-areas: '. . .' '. . .'  'title title title' 'desc desc desc' 'date date date' 'prio prio prio' 'done done done' 'btn1 btn2 btn3'; }
+      .container-total .visible .only-one__task p {
+        width: max-content; }
+      .container-total .visible .only-one__task .title-task__only, .container-total .visible .only-one__task .desc-task__only, .container-total .visible .only-one__task .date-task__only, .container-total .visible .only-one__task .prio-task__only, .container-total .visible .only-one__task .done-task__only, .container-total .visible .only-one__task #edit_task, .container-total .visible .only-one__task #delete_task, .container-total .visible .only-one__task #close_task {
+        grid-area: title;
+        justify-self: center;
+        align-self: center; }
+      .container-total .visible .only-one__task .desc-task__only {
+        grid-area: desc; }
+      .container-total .visible .only-one__task .date-task__only {
+        grid-area: date; }
+      .container-total .visible .only-one__task .prio-task__only {
+        grid-area: prio; }
+      .container-total .visible .only-one__task .done-task__only {
+        grid-area: done; }
+      .container-total .visible .only-one__task #edit_task {
+        grid-area: btn1; }
+      .container-total .visible .only-one__task #delete_task {
+        grid-area: btn2; }
+      .container-total .visible .only-one__task #close_task {
+        grid-area: btn3; }
+    .container-total .visible form {
+      background-color: white;
+      width: 50%;
+      height: 60%;
+      border: 1px solid lightgrey;
+      border-radius: 0.5rem;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(1, 2fr);
+      grid-template-rows: repeat(11, 40px);
+      row-gap: 5px;
+      margin: 2rem; }
   .container-total .list-all__container {
     padding: 0 0.5rem; }
-  .container-total .task-list__default {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 30px;
-    grid-template-areas: 'title desc date prio done';
-    background-color: #820d7c;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    margin-top: 1rem; }
-    .container-total .task-list__default .title-def, .container-total .task-list__default .desc-def, .container-total .task-list__default .date-def, .container-total .task-list__default .prio-def, .container-total .task-list__default .done-def {
-      grid-area: title;
-      color: #ffffff;
-      font-weight: 700;
-      justify-self: center;
-      align-self: center; }
-    .container-total .task-list__default .desc-def, .container-total .task-list__default .date-def, .container-total .task-list__default .prio-def, .container-total .task-list__default .done-def {
-      grid-area: desc; }
-    .container-total .task-list__default .date-def {
-      grid-area: date; }
-    .container-total .task-list__default .prio-def {
-      grid-area: prio; }
-    .container-total .task-list__default .done-def {
-      grid-area: done; }
-  .container-total .task-list__all {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 0.5rem 0;
-    list-style: none;
-    border: 1px solid lightgray; }
-    .container-total .task-list__all li {
-      width: max-content; }
+    .container-total .list-all__container .task-list__default {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 30px;
+      grid-template-areas: 'proj title desc date prio done';
+      background-color: #820d7c;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      margin-top: 1rem; }
+      .container-total .list-all__container .task-list__default .title-def, .container-total .list-all__container .task-list__default .proj-def, .container-total .list-all__container .task-list__default .desc-def, .container-total .list-all__container .task-list__default .date-def, .container-total .list-all__container .task-list__default .prio-def, .container-total .list-all__container .task-list__default .done-def {
+        grid-area: title;
+        color: #ffffff;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center; }
+      .container-total .list-all__container .task-list__default .proj-def {
+        grid-area: proj; }
+      .container-total .list-all__container .task-list__default .desc-def, .container-total .list-all__container .task-list__default .date-def, .container-total .list-all__container .task-list__default .prio-def, .container-total .list-all__container .task-list__default .done-def {
+        grid-area: desc; }
+      .container-total .list-all__container .task-list__default .date-def {
+        grid-area: date; }
+      .container-total .list-all__container .task-list__default .prio-def {
+        grid-area: prio; }
+      .container-total .list-all__container .task-list__default .done-def {
+        grid-area: done; }
+    .container-total .list-all__container .task-list__all {
+      padding: 0.5rem 0;
+      list-style: none;
+      border: 1px solid lightgray;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 30px;
+      grid-template-areas: 'proja titlea desca datea prioa donea'; }
+      .container-total .list-all__container .task-list__all li {
+        width: max-content; }
+      .container-total .list-all__container .task-list__all .proj-all, .container-total .list-all__container .task-list__all .title-all, .container-total .list-all__container .task-list__all .desc-all, .container-total .list-all__container .task-list__all .date-all, .container-total .list-all__container .task-list__all .prio-all, .container-total .list-all__container .task-list__all .done-all {
+        grid-area: proja;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center; }
+      .container-total .list-all__container .task-list__all .title-all {
+        grid-area: titlea; }
+      .container-total .list-all__container .task-list__all .desc-all {
+        grid-area: desca;
+        width: 150px;
+        overflow-y: scroll; }
+      .container-total .list-all__container .task-list__all .date-all {
+        grid-area: datea; }
+      .container-total .list-all__container .task-list__all .prio-all {
+        grid-area: prioa; }
+      .container-total .list-all__container .task-list__all .done-all {
+        grid-area: donea; }
   .container-total .title-webp {
     grid-area: title;
     align-self: center;
     justify-self: center;
     margin-bottom: 5rem; }
+  .container-total h2 {
+    margin: 0; }
   .container-total .cont-titlesp {
     grid-area: titlesp;
     align-self: center;
-    justify-self: center; }
+    justify-self: center;
+    background-color: #ffffff;
+    border-top-left-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
   .container-total .cont-titlest {
     grid-area: titlet;
-    align-self: center;
+    align-self: flex-start;
     justify-self: center;
     background-color: #820d7c;
     color: #ffffff;
@@ -110,11 +177,10 @@ button {
     height: 100%;
     text-align: center;
     border-top-right-radius: 0.5rem; }
-  .container-total p {
-    margin: 0; }
   .container-total .pill-important, .container-total .pill-normal, .container-total .pill-low {
     color: #f7f7f7;
     background-color: #C70039;
+    width: max-content;
     padding-right: 0.6em;
     padding-left: 0.6em;
     border-radius: 10rem; }
@@ -207,16 +273,55 @@ button {
     text-align: center;
     padding: 0 0.5rem;
     margin-bottom: 0.5rem; }
-    .container-total .task .task-done {
-      text-decoration: line-through; }
-  .container-total .task-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0;
-    list-style: none;
-    border: 1px solid lightgray;
-    border-radius: 0.5rem; }
-    .container-total .task-list li {
-      width: max-content; }
+    .container-total .task .task-list__defproj {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 30px;
+      grid-template-areas: 'title desc date prio done';
+      background-color: #820d7c;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      margin-top: 1rem; }
+      .container-total .task .task-list__defproj .title-def, .container-total .task .task-list__defproj .list-all__container .task-list__default .proj-def, .container-total .list-all__container .task-list__default .task .task-list__defproj .proj-def, .container-total .task .task-list__defproj .desc-def, .container-total .task .task-list__defproj .date-def, .container-total .task .task-list__defproj .prio-def, .container-total .task .task-list__defproj .done-def {
+        grid-area: title;
+        color: #ffffff;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center; }
+      .container-total .task .task-list__defproj .desc-def, .container-total .task .task-list__defproj .date-def, .container-total .task .task-list__defproj .prio-def, .container-total .task .task-list__defproj .done-def {
+        grid-area: desc; }
+      .container-total .task .task-list__defproj .date-def {
+        grid-area: date; }
+      .container-total .task .task-list__defproj .prio-def {
+        grid-area: prio; }
+      .container-total .task .task-list__defproj .done-def {
+        grid-area: done; }
+    .container-total .task .task-list {
+      padding: 0.5rem 0;
+      list-style: none;
+      border: 1px solid lightgray;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 100px;
+      grid-template-areas: 'titlea desca datea prioa donea'; }
+      .container-total .task .task-list li {
+        width: max-content; }
+      .container-total .task .task-list .title-task__proj, .container-total .task .task-list .desc-task__proj, .container-total .task .task-list .date-task__proj, .container-total .task .task-list .done-task__proj {
+        grid-area: titlea;
+        justify-self: center;
+        align-self: center;
+        height: 100%; }
+      .container-total .task .task-list .desc-task__proj {
+        grid-area: desca;
+        width: 170px;
+        word-wrap: break-word;
+        overflow-y: scroll; }
+      .container-total .task .task-list .date-task__proj {
+        grid-area: datea; }
+      .container-total .task .task-list .prio-task__proj {
+        grid-area: prioa;
+        justify-self: center;
+        align-self: flex-start; }
+      .container-total .task .task-list .done-task__proj {
+        grid-area: donea; }
 
