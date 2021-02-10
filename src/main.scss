@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html,
+p,
+h1,
+li,
+button {
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: #f7f7f7;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 700;
+  color: #fff;
+  background-color: #820d7c;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.container-total {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 30px 30px 20rem 25rem 10rem;
+  grid-template-areas:
+    'title title'
+    'titlesp titlet'
+    'projects tasks '
+    'projects tasks '
+    'addproj addproj';
+  margin-top: 3rem;
+
+  .invisible {
+    position: absolute;
+    display: none;
+  }
+
+  .container-project {
+    grid-area: projects;
+    background-color: #820d7c;
+    color: #fff;
+    height: 100%;
+    border-bottom-left-radius: 0.5rem;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #2f7e83;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #0a4b4d;
+    }
+
+    p {
+      font-size: 1.5em;
+      font-style: oblique;
+      text-transform: uppercase;
+      margin-left: 0.8rem;
+      cursor: pointer;
+      width: max-content;
+    }
+  }
+
+  .visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.603);
+
+    .only-one__task {
+      background-color: white;
+      width: 50%;
+      height: 40%;
+      border: 1px solid lightgrey;
+      border-radius: 0.5rem;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(3, 2fr);
+      grid-template-rows: repeat(8, 40px);
+      grid-template-areas:
+        '. . .'
+        '. . .'
+        'title title title'
+        'desc desc desc'
+        'date date date'
+        'prio prio prio'
+        'done done done'
+        'btn1 btn2 btn3';
+
+      p {
+        width: max-content;
+      }
+
+      .title-task__only {
+        grid-area: title;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .desc-task__only {
+        @extend .title-task__only;
+
+        grid-area: desc;
+      }
+
+      .date-task__only {
+        @extend .title-task__only;
+
+        grid-area: date;
+      }
+
+      .prio-task__only {
+        @extend .title-task__only;
+
+        grid-area: prio;
+      }
+
+      .done-task__only {
+        @extend .title-task__only;
+
+        grid-area: done;
+      }
+
+      #edit_task {
+        @extend .title-task__only;
+
+        grid-area: btn1;
+      }
+
+      #delete_task {
+        @extend .title-task__only;
+
+        grid-area: btn2;
+      }
+
+      #close_task {
+        @extend .title-task__only;
+
+        grid-area: btn3;
+      }
+    }
+
+    form {
+      background-color: white;
+      width: 50%;
+      height: 60%;
+      border: 1px solid lightgrey;
+      border-radius: 0.5rem;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(1, 2fr);
+      grid-template-rows: repeat(11, 40px);
+      row-gap: 10px;
+      padding: 2rem;
+    }
+  }
+
+  .list-all__container {
+    padding: 0 0.5rem;
+
+    .task-list__default {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 30px;
+      grid-template-areas: 'proj title desc date prio done';
+      background-color: #820d7c;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      margin-top: 1rem;
+
+      .title-def {
+        grid-area: title;
+        color: #fff;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .proj-def {
+        @extend .title-def;
+
+        grid-area: proj;
+      }
+
+      .desc-def {
+        @extend .title-def;
+
+        grid-area: desc;
+      }
+
+      .date-def {
+        @extend .desc-def;
+
+        grid-area: date;
+      }
+
+      .prio-def {
+        @extend .desc-def;
+
+        grid-area: prio;
+      }
+
+      .done-def {
+        @extend .desc-def;
+
+        grid-area: done;
+      }
+    }
+
+    .task-list__all {
+      padding: 0.5rem 0;
+      list-style: none;
+      border: 1px solid lightgray;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 50px;
+      grid-template-areas: 'proja titlea desca datea prioa donea';
+
+      li {
+        width: max-content;
+      }
+
+      .proj-all {
+        grid-area: proja;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .title-all {
+        @extend .proj-all;
+
+        grid-area: titlea;
+      }
+
+      .desc-all {
+        @extend .proj-all;
+
+        grid-area: desca;
+        width: 150px;
+        height: 100%;
+        overflow-y: scroll;
+      }
+
+      .date-all {
+        @extend .proj-all;
+
+        grid-area: datea;
+      }
+
+      .prio-all {
+        @extend .proj-all;
+
+        grid-area: prioa;
+      }
+
+      .done-all {
+        @extend .proj-all;
+
+        grid-area: donea;
+      }
+    }
+  }
+
+  .title-webp {
+    grid-area: title;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 5rem;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .cont-titlesp {
+    grid-area: titlesp;
+    align-self: center;
+    justify-self: center;
+    background-color: #fff;
+    border-top-left-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  .cont-titlest {
+    grid-area: titlet;
+    align-self: flex-start;
+    justify-self: center;
+    background-color: #820d7c;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .pill-important {
+    color: #f7f7f7;
+    background-color: #c70039;
+    width: max-content;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+  }
+
+  .pill-normal {
+    @extend .pill-important;
+
+    background-color: #0d7c82;
+  }
+
+  .pill-low {
+    @extend .pill-important;
+
+    background-color: #7c820d;
+  }
+
+  .cont-newProject {
+    grid-area: addproj;
+    justify-self: left;
+    padding-top: 2rem;
+    height: max-content;
+    width: 22rem;
+    text-align: center;
+
+    input {
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .container-task {
+    grid-area: tasks;
+    width: 100%;
+    height: 100%;
+    justify-self: left;
+    background-color: #fff;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #2f7e83;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #0a4b4d;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(4, 3rem);
+      grid-template-areas:
+        'title desc'
+        'date date'
+        'prio prio'
+        'buton buton';
+      column-gap: 2rem;
+      row-gap: 2rem;
+      margin: 0 0.5rem;
+      padding: 2rem 0;
+
+      span {
+        display: block;
+        width: 100%;
+        background-color: #c70039;
+        font-size: 2em;
+        color: white;
+        padding-left: 2rem;
+        border-radius: 0.5rem;
+      }
+
+      label {
+        text-align: center;
+      }
+
+      .cont-ftitle {
+        grid-area: title;
+        text-align: center;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .cont-fdesc {
+        @extend .cont-ftitle;
+
+        grid-area: desc;
+      }
+
+      .cont-fdate {
+        @extend .cont-ftitle;
+
+        grid-area: date;
+        align-items: center;
+
+        input {
+          width: 30%;
+        }
+      }
+
+      .cont-fprio {
+        @extend .cont-ftitle;
+
+        grid-area: prio;
+        align-items: center;
+      }
+
+      .cont-fbuton {
+        grid-area: buton;
+        justify-self: center;
+      }
+    }
+  }
+
+  // .cont-newProject {
+  //   grid-area: addproj;
+  //   justify-self: left;
+  //   padding-top: 2rem;
+  //   height: max-content;
+  //   width: 22rem;
+  //   text-align: center;
+
+  //   input {
+  //     margin-bottom: 0.5rem;
+  //     border-radius: 0.5rem;
+  //   }
+  // }
+
+  .task {
+    height: max-content;
+    text-align: center;
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .task-list__defproj {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 30px;
+      grid-template-areas: 'title desc date prio done';
+      background-color: #820d7c;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      margin-top: 1rem;
+
+      .title-def {
+        grid-area: title;
+        color: #fff;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .desc-def {
+        @extend .title-def;
+
+        grid-area: desc;
+      }
+
+      .date-def {
+        @extend .desc-def;
+
+        grid-area: date;
+      }
+
+      .prio-def {
+        @extend .desc-def;
+
+        grid-area: prio;
+      }
+
+      .done-def {
+        @extend .desc-def;
+
+        grid-area: done;
+      }
+    }
+
+    .task-list {
+      padding: 0.5rem 0;
+      list-style: none;
+      border: 1px solid lightgray;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 100px;
+      grid-template-areas: 'titlea desca datea prioa donea';
+
+      li {
+        width: max-content;
+      }
+
+      .title-task__proj {
+        grid-area: titlea;
+        justify-self: center;
+        align-self: center;
+        height: 100%;
+      }
+
+      .desc-task__proj {
+        @extend .title-task__proj;
+
+        grid-area: desca;
+        width: 170px;
+        word-wrap: break-word;
+        overflow-y: scroll;
+      }
+
+      .date-task__proj {
+        @extend .title-task__proj;
+
+        grid-area: datea;
+      }
+
+      .prio-task__proj {
+        grid-area: prioa;
+        justify-self: center;
+        align-self: flex-start;
+      }
+
+      .done-task__proj {
+        @extend .title-task__proj;
+
+        grid-area: donea;
+      }
+    }
+  }
+}
