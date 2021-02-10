@@ -153,7 +153,7 @@ button {
       border: 1px solid lightgray;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: 30px;
+      grid-template-rows: 50px;
       grid-template-areas: 'proja titlea desca datea prioa donea'; }
       .container-total .list-all__container .task-list__all li {
         width: max-content; }
@@ -167,6 +167,7 @@ button {
       .container-total .list-all__container .task-list__all .desc-all {
         grid-area: desca;
         width: 150px;
+        height: 100%;
         overflow-y: scroll; }
       .container-total .list-all__container .task-list__all .date-all {
         grid-area: datea; }
@@ -246,6 +247,14 @@ button {
       row-gap: 2rem;
       margin: 0 0.5rem;
       padding: 2rem 0; }
+      .container-total .container-task form #task_exist, .container-total .container-task form #task_empty {
+        display: block;
+        width: 100%;
+        background-color: #c70039;
+        font-size: 2em;
+        color: white;
+        padding-left: 2rem;
+        border-radius: 0.5rem; }
       .container-total .container-task form label {
         text-align: center; }
       .container-total .container-task form .cont-ftitle, .container-total .container-task form .cont-fdesc, .container-total .container-task form .cont-fdate, .container-total .container-task form .cont-fprio {

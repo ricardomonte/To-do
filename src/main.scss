@@ -249,7 +249,7 @@ button {
       border: 1px solid lightgray;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: 30px;
+      grid-template-rows: 50px;
       grid-template-areas: 'proja titlea desca datea prioa donea';
 
       li {
@@ -274,6 +274,7 @@ button {
 
         grid-area: desca;
         width: 150px;
+        height: 100%;
         overflow-y: scroll;
       }
 
@@ -404,6 +405,20 @@ button {
       row-gap: 2rem;
       margin: 0 0.5rem;
       padding: 2rem 0;
+
+      #task_exist {
+        display: block;
+        width: 100%;
+        background-color: #c70039;
+        font-size: 2em;
+        color: white;
+        padding-left: 2rem;
+        border-radius: 0.5rem;
+      }
+
+      #task_empty {
+        @extend #task_exist;
+      }
 
       label {
         text-align: center;
