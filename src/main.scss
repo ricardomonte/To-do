@@ -406,7 +406,7 @@ button {
       margin: 0 0.5rem;
       padding: 2rem 0;
 
-      #task_exist {
+      span {
         display: block;
         width: 100%;
         background-color: #c70039;
@@ -414,10 +414,6 @@ button {
         color: white;
         padding-left: 2rem;
         border-radius: 0.5rem;
-      }
-
-      #task_empty {
-        @extend #task_exist;
       }
 
       label {
