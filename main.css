@@ -247,7 +247,7 @@ button {
       row-gap: 2rem;
       margin: 0 0.5rem;
       padding: 2rem 0; }
-      .container-total .container-task form #task_exist, .container-total .container-task form #task_empty {
+      .container-total .container-task form span {
         display: block;
         width: 100%;
         background-color: #c70039;
