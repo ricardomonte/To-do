@@ -169,7 +169,8 @@ const taskEdit = (arr, container) => {
 const reloadElement = (arrElement) => {
   const task = document.querySelectorAll('div.task');
   task.forEach((item) => {
-    if (item.innerText.includes(arrElement[0]) && item.innerText.includes(arrElement[1])) {
+    if (item.innerText.includes(arrElement[0]) && item.innerText.includes(arrElement[1])
+      && item.innerText.includes(arrElement[2])) {
       item.remove();
     }
   });

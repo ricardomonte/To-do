@@ -2,6 +2,8 @@ import taskGenerator from './taskCreatorClass';
 import addToLocalProject from './addToLocal';
 import taskInLocal from './taskInLocal';
 import taskDisplayElements from './taskDisplayElements';
+import taskIsIn from './taskIsIn';
+import { existInLocal, emptyForm } from './messagesAlert';
 
 const removeElement = (task) => {
   task.forEach((item) => { item.remove(); });
@@ -27,15 +29,25 @@ const createNewTask = (element) => {
     e.preventDefault();
     const parent = element.parentElement;
     const valuesTask = getValueFormTask();
-    const task = taskGenerator(...valuesTask);
-    addToLocalProject(...task);
-    const projectArr = taskInLocal(element.id);
-    parent.append(element);
-    reloadElement();
-    projectArr.forEach((item) => {
-      taskDisplayElements(parent, item.title, item.description,
-        item.date, item.priority, item.done);
-    });
+    const empty = (item) => item === '';
+    const filtered = taskIsIn(valuesTask);
+    if (valuesTask.some(empty)) {
+      emptyForm(element);
+      setTimeout(() => { document.querySelector('#task_empty').remove(); }, 3500);
+    } else if (filtered.length === 0) {
+      const task = taskGenerator(...valuesTask);
+      addToLocalProject(...task);
+      const projectArr = taskInLocal(element.id);
+      parent.append(element);
+      reloadElement();
+      projectArr.forEach((item) => {
+        taskDisplayElements(parent, item.title, item.description,
+          item.date, item.priority, item.done);
+      });
+    } else {
+      existInLocal(element);
+      setTimeout(() => { document.querySelector('#task_exist').remove(); }, 3500);
+    }
     element.reset();
   });
 };
