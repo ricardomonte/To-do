@@ -1,37 +1,34 @@
-import { expect, test } from '@jest/globals';
 import taskOnly from '../assets/taskOnly';
 
-document.body.innerHTML = 
-  '<div id="task-inv"></div>' +
-  '<div id=test>' +
-    '<ul>' +
-      '<li>cumbia</li>' +
-      '<li>practice cumbia</li>' +
-      '<li>2021-02-14</li>' +
-      '<li>Important</li>' +
-      '<li>Incomplete</li>' +
-    '</ul>' +
-  '</div>';
+document.body.innerHTML = '<div id="task-inv"></div>'
+  + '<div id=test>'
+    + '<ul>'
+      + '<li>cumbia</li>'
+      + '<li>practice cumbia</li>'
+      + '<li>2021-02-14</li>'
+      + '<li>Important</li>'
+      + '<li>Incomplete</li>'
+    + '</ul>'
+  + '</div>';
 
-const localStorageMock = (function() {
-  const store = {};
+const localStorageMock = (() => {
+  let store = {};
 
   return {
-      getItem: function(key) {
-          return store[key] || [];
-      },
-      setItem: function(key, value) {
-          store[key] = JSON.stringify(value);
-      },
-      clear: function() {
-          store = {};
-      }
+    getItem(key) {
+      return store[key] || [];
+    },
+    setItem(key, value) {
+      store[key] = JSON.stringify(value);
+    },
+    clear() {
+      store = {};
+    },
   };
-
 })();
 
 Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock
+  value: localStorageMock,
 });
 
 const mock = {
@@ -43,10 +40,10 @@ const mock = {
   done: false,
 };
 
-const elementContainer = document.querySelector('#test')
+const elementContainer = document.querySelector('#test');
 
 test('element with id task-inv will have content', () => {
   localStorageMock.setItem('task', [mock]);
   taskOnly(elementContainer);
-  expect(document.querySelector('#task-inv').firstElementChild.className).toBe('only-one__task')
+  expect(document.querySelector('#task-inv').firstElementChild.className).toBe('only-one__task');
 });

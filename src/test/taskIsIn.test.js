@@ -1,9 +1,8 @@
-import { beforeEach, expect, jest, test } from '@jest/globals';
 import taskIsIn from '../assets/taskIsIn';
 import getLocalProject from '../assets/getLocal';
 
 
-jest.mock('../../src/assets/getLocal')
+jest.mock('../../src/assets/getLocal');
 
 const mock = {
   project: 'dance',
@@ -15,32 +14,31 @@ const mock = {
 };
 
 beforeEach(() => {
-  getLocalProject.mockClear()
+  getLocalProject.mockClear();
 });
 
 test('returned element is an instance of an Array', () => {
   getLocalProject.mockReturnValue([mock]);
   const arr = ['fly', 'winds', 'fly with winds'];
   const result = taskIsIn(arr);
-  expect(result).toBeInstanceOf(Array)
-
-})
+  expect(result).toBeInstanceOf(Array);
+});
 
 test('returned element is not an instance of an String', () => {
   getLocalProject.mockReturnValue([mock]);
   const arr = ['run', '10k', 'with my legs'];
   const result = taskIsIn(arr);
-  expect(result).not.toBeInstanceOf(String)
-})
+  expect(result).not.toBeInstanceOf(String);
+});
 
 test('getLocalProject is called', () => {
   const arr = ['fly', 'winds', 'fly with winds'];
   taskIsIn(arr);
-  expect(getLocalProject).toHaveBeenCalled()
-})
+  expect(getLocalProject).toHaveBeenCalled();
+});
 
 test('element inside of the array returned its an object', () => {
   const arr = ['dance', 'cumbia', 'practice cumbia'];
   const result = taskIsIn(arr);
-  expect(result[0]).toBeInstanceOf(Object)
-})
+  expect(result[0]).toBeInstanceOf(Object);
+});

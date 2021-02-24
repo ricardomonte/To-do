@@ -1,32 +1,29 @@
 import taskAll from '../assets/taskAll';
-import { expect, test } from '@jest/globals';
 
-const localStorageMock = (function() {
-  const store = {};
+const localStorageMock = (() => {
+  let store = {};
 
   return {
-      getItem: function(key) {
-          return store[key] || [];
-      },
-      setItem: function(key, value) {
-          store[key] = JSON.stringify(value);
-      },
-      clear: function() {
-          store = {};
-      }
+    getItem(key) {
+      return store[key] || [];
+    },
+    setItem(key, value) {
+      store[key] = JSON.stringify(value);
+    },
+    clear() {
+      store = {};
+    },
   };
-
 })();
 
-document.body.innerHTML =
-'<div>' +
-'  <div id="my-projects"></div>' +
-'  <div id="cont"></div>' +
-'  <div id="addProj"></div>'
-'</div>';
+document.body.innerHTML = '<div>'
++ '  <div id="my-projects"></div>'
++ '  <div id="cont"></div>'
++ '  <div id="addProj"></div>'
++ '</div>';
 
 Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock
+  value: localStorageMock,
 });
 
 const mock = {
@@ -38,18 +35,18 @@ const mock = {
   done: false,
 };
 
-localStorageMock.setItem('task', [mock])
+localStorageMock.setItem('task', [mock]);
 
-taskAll()
+taskAll();
 
 test('append div element in div with id "cont"', () => {
-  const elementTag = document.querySelector('#cont').firstElementChild.tagName
-  expect(elementTag).toBe('DIV')
-  expect(elementTag).not.toBe('UL')
-})
+  const elementTag = document.querySelector('#cont').firstElementChild.tagName;
+  expect(elementTag).toBe('DIV');
+  expect(elementTag).not.toBe('UL');
+});
 
 test('class first element child "list-all__container"', () => {
-  const elementName = document.querySelector('#cont').firstElementChild.className
-  expect(elementName).toBe('list-all__container')
-  expect(elementName).not.toBe('proj-all')
-})
+  const elementName = document.querySelector('#cont').firstElementChild.className;
+  expect(elementName).toBe('list-all__container');
+  expect(elementName).not.toBe('proj-all');
+});

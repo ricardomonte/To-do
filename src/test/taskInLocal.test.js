@@ -1,8 +1,7 @@
-import { beforeEach, expect, jest, test } from '@jest/globals';
 import taskInLocal from '../assets/taskInLocal';
 import getLocalProject from '../assets/getLocal';
 
-jest.mock('../../src/assets/getLocal')
+jest.mock('../../src/assets/getLocal');
 
 const mock = {
   project: 'dance',
@@ -14,25 +13,25 @@ const mock = {
 };
 
 beforeEach(() => {
-  getLocalProject.mockClear()
+  getLocalProject.mockClear();
 });
 
 test('returned element its an instance of an Array', () => {
   getLocalProject.mockReturnValue([mock]);
   const titleProject = 'dance';
-  const result = taskInLocal(titleProject)
-  expect(result).toBeInstanceOf(Array)
+  const result = taskInLocal(titleProject);
+  expect(result).toBeInstanceOf(Array);
 });
 
 test('returned element is not an instance of String', () => {
   getLocalProject.mockReturnValue([mock]);
   const titleProject = 'dance';
-  const result = taskInLocal(titleProject)
-  expect(result).not.toBeInstanceOf(String)
+  const result = taskInLocal(titleProject);
+  expect(result).not.toBeInstanceOf(String);
 });
 
 test('getLocal is called', () => {
   const titleProject = 'dance';
-  taskInLocal(titleProject)
-  expect(getLocalProject).toHaveBeenCalled()
-})
+  taskInLocal(titleProject);
+  expect(getLocalProject).toHaveBeenCalled();
+});

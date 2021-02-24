@@ -27,8 +27,8 @@ module.exports = {
       },
       {
         resolve: {
-          extensions: ['*', '.js']
-        }
+          extensions: ['*', '.js'],
+        },
       },
       {
         test: /\.html$/i,

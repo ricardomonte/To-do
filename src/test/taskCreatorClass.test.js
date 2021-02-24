@@ -1,8 +1,7 @@
-import { expect, test } from '@jest/globals';
 import taskGenerator from '../assets/taskCreatorClass';
 
 const project = 'dance';
-const title = 'cumbia'
+const title = 'cumbia';
 const description = 'practice cumbia';
 const date = '2021-02-14';
 const priority = 'Important';
@@ -18,9 +17,9 @@ const mock = {
 };
 
 test('return an array with length 2', () => {
-  expect(taskGenerator(project, title, description, date, priority, done).length).toBe(2)
+  expect(taskGenerator(project, title, description, date, priority, done).length).toBe(2);
 });
 
 test('second element in array is an Object', () => {
-  expect(taskGenerator(project, title, description, date, priority, done)[1]).toEqual(mock)
-})
+  expect(taskGenerator(project, title, description, date, priority, done)[1]).toEqual(mock);
+});
