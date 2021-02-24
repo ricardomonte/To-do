@@ -24,6 +24,16 @@ To get a local copy up and running follow these simple steps:
 - Go to the main page.
 - Press the "Code" button and get the repo link.
 - Clone it using git command "git clone".
+- Open in terminal the folder just cloned.
+- run in terminal 'npm install'.
+- To see locally run 'npm run build'.
+- You can visualize the project by opening index.html in the dist folder.
+
+##  :construction_worker: For testing
+
+After runing 'npm install':
+
+- In the terminal run 'npm run test'.
 
 ## :bust_in_silhouette: Author
 
