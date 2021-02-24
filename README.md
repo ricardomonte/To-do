@@ -12,6 +12,7 @@ The todo-list project was built as the third project of the JavaScript module fr
 - Scss
 - JavaScript
 - Webpack
+- Jest
 
 ##  :red_circle: Live Demo:
 
