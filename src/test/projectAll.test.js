@@ -1,9 +1,9 @@
-import projects from '../assets/projectAll';
-import displayProject from '../assets/displayProject';
-import getLocalProject from '../assets/getLocal';
+import projects from '../js/projectAll';
+import displayProject from '../js/displayProject';
+import getLocalProject from '../js/getLocal';
 
-jest.mock('../../src/assets/displayProject');
-jest.mock('../../src/assets/getLocal');
+jest.mock('../../src/js/displayProject');
+jest.mock('../../src/js/getLocal');
 getLocalProject.mockImplementation(() => ['dance']);
 
 test('getLocalProject called', () => {

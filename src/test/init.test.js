@@ -1,15 +1,15 @@
-import init from '../assets/init';
-import formProject from '../assets/formNewProject';
-import project from '../assets/projectAll';
-import clickDisplayTask from '../assets/clickDisplayTask';
-import taskAll from '../assets/taskAll';
-import taskProjectDefault from '../assets/taskProjectDefault';
+import init from '../js/init';
+import formProject from '../js/formNewProject';
+import project from '../js/projectAll';
+import clickDisplayTask from '../js/clickDisplayTask';
+import taskAll from '../js/taskAll';
+import taskProjectDefault from '../js/taskProjectDefault';
 
-jest.mock('../../src/assets/projectAll');
-jest.mock('../../src/assets/clickDisplayTask');
-jest.mock('../../src/assets/taskAll');
-jest.mock('../../src/assets/taskProjectDefault');
-jest.mock('../../src/assets/formNewProject');
+jest.mock('../../src/js/projectAll');
+jest.mock('../../src/js/clickDisplayTask');
+jest.mock('../../src/js/taskAll');
+jest.mock('../../src/js/taskProjectDefault');
+jest.mock('../../src/js/formNewProject');
 
 
 beforeEach(() => {

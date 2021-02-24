@@ -1,4 +1,4 @@
-import displayProject from '../assets/displayProject';
+import displayProject from '../js/displayProject';
 
 test('display project', () => {
   document.body.innerHTML = '<div>'

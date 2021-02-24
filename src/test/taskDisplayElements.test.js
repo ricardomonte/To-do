@@ -1,7 +1,7 @@
-import taskDisplayElements from '../assets/taskDisplayElements';
-import taskOnlyClick from '../assets/taskOnlyClick';
+import taskDisplayElements from '../js/taskDisplayElements';
+import taskOnlyClick from '../js/taskOnlyClick';
 
-jest.mock('../../src/assets/taskOnlyClick');
+jest.mock('../../src/js/taskOnlyClick');
 
 const title = 'cumbia';
 const description = 'practice cumbia';

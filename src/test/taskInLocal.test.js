@@ -1,7 +1,7 @@
-import taskInLocal from '../assets/taskInLocal';
-import getLocalProject from '../assets/getLocal';
+import taskInLocal from '../js/taskInLocal';
+import getLocalProject from '../js/getLocal';
 
-jest.mock('../../src/assets/getLocal');
+jest.mock('../../src/js/getLocal');
 
 const mock = {
   project: 'dance',

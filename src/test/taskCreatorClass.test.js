@@ -1,4 +1,4 @@
-import taskGenerator from '../assets/taskCreatorClass';
+import taskGenerator from '../js/taskCreatorClass';
 
 const project = 'dance';
 const title = 'cumbia';

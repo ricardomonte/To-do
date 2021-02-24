@@ -1,4 +1,4 @@
-import { existInLocal, emptyForm } from '../assets/messagesAlert';
+import { existInLocal, emptyForm } from '../js/messagesAlert';
 
 document.body.innerHTML = '<div id="parent">'
 + '</div>';

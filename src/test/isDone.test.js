@@ -1,4 +1,4 @@
-import isDone from '../assets/isDone';
+import isDone from '../js/isDone';
 
 test('return a incomplete', () => {
   const element = isDone(false);

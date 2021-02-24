@@ -1,4 +1,4 @@
-import taskOnly from '../assets/taskOnly';
+import taskOnly from '../js/taskOnly';
 
 document.body.innerHTML = '<div id="task-inv"></div>'
   + '<div id=test>'

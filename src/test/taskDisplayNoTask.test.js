@@ -1,4 +1,4 @@
-import taskDisplayNoTask from '../assets/taskDisplayNoTask';
+import taskDisplayNoTask from '../js/taskDisplayNoTask';
 
 document.body.innerHTML = '<div id=cont></div>';
 

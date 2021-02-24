@@ -1,4 +1,4 @@
-import priorityCheck from '../assets/checkPriority';
+import priorityCheck from '../js/checkPriority';
 
 test('return class name for scss', () => {
   expect(priorityCheck('Important')).toBe('pill-important');

@@ -1,4 +1,4 @@
-import taskAll from '../assets/taskAll';
+import taskAll from '../js/taskAll';
 
 const localStorageMock = (() => {
   let store = {};

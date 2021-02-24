@@ -1,4 +1,4 @@
-import taskForm from '../assets/taskForm';
+import taskForm from '../js/taskForm';
 
 test('returned element is a form', () => {
   const form = taskForm('dance');
